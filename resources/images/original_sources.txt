@@ -1,0 +1,10 @@
+Original images used in the GUI
+
+https://commons.wikimedia.org/wiki/File:Linear_Accelerator_-_Elekta_Compact_model.jpg
+
+https://en.wikipedia.org/wiki/File:Klystron.enp.gif
+
+https://upload.wikimedia.org/wikipedia/commons/0/0c/The_805_MHz_side-couple_cavities.jpg
+
+https://upload.wikimedia.org/wikipedia/commons/e/e3/Medical_Linac.svg
+
