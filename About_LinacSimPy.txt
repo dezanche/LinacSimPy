@@ -1,0 +1,12 @@
+SIMAC 0.5 alpha
+
+SIMAC is medical linear accelerator simulation software
+Copyright (C) 2025 Alberta Health Services
+
+LinacSimPy is licensed under the GPL...
+
+
+You should have received a copy of the license along with this work.  If not, see <>.
+
+Original authors:
+Marco Carlone, Miller MacPherson, Rhys Anderson, Michael Lamey, Kevin Wang
