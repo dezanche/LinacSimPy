@@ -1,8 +1,4 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: views\simacMainWidget.pyc
-# Compiled at: 2016-09-20 08:28:13
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -825,8 +821,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         ## actions
-        self.actionAbout_SIMAC = QtWidgets.QAction(MainWindow)
-        self.actionAbout_SIMAC.setObjectName(_fromUtf8('actionAbout_SIMAC'))
+        self.actionAbout_LinacSimPy = QtWidgets.QAction(MainWindow)
+        self.actionAbout_LinacSimPy.setObjectName(_fromUtf8('actionAbout_LinacSimPy'))
         self.actionLicense = QtWidgets.QAction(MainWindow)
         self.actionLicense.setObjectName(_fromUtf8('actionLicense'))
         self.actionTutorial = QtWidgets.QAction(MainWindow)
@@ -850,7 +846,7 @@ class Ui_MainWindow(object):
         #added exit in menu
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName(_fromUtf8('actionExit'))
-        self.menuHelp.addAction(self.actionAbout_SIMAC)
+        self.menuHelp.addAction(self.actionAbout_LinacSimPy)
         self.menuHelp.addSeparator() # added
         self.menuHelp.addAction(self.actionLicense)
         self.menuHelp.addAction(self.actionTutorial)
@@ -871,7 +867,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate('MainWindow', 'LinacSimPy', None))  # was SIMAC
+        MainWindow.setWindowTitle(_translate('MainWindow', 'LinacSimPy', None))
         self.label_4.setText(_translate('MainWindow', 'Trans F [%]', None))
         self.label_7.setText(_translate('MainWindow', 'Beam On/Off', None))
         self.pushButton_BeamOn.setText(_translate('MainWindow', 'On/Off', None))
@@ -951,7 +947,7 @@ class Ui_MainWindow(object):
         self.pushButton_TreatmentHead.setText(_translate('MainWindow', 'Treatment Head', None))
         self.menuHelp.setTitle(_translate('MainWindow', 'Help', None))
         self.menuFile.setTitle(_translate('MainWindow', 'File', None))
-        self.actionAbout_SIMAC.setText(_translate('MainWindow', 'About LinacSimPy', None))  # was SIMAC
+        self.actionAbout_LinacSimPy.setText(_translate('MainWindow', 'About LinacSimPy', None))
         self.actionLicense.setText(_translate('MainWindow', 'License', None))
         self.actionTutorial.setText(_translate('MainWindow', 'Tutorial', None))
         self.actionTheory.setText(_translate('MainWindow', 'Theory', None))
@@ -962,6 +958,5 @@ class Ui_MainWindow(object):
         self.actionLoad_Exercise.setText(_translate('MainWindow', 'Load Exercise (binary) ...', None))
         self.actionValidate_Exercise.setText(_translate('MainWindow', 'Validate Exercise ?? ...', None))
         self.actionSave_Exercise.setText(_translate('MainWindow', 'Save Exercise Output (binary) ...', None))
-        self.actionExit.setText(_translate('MainWindow', 'Exit LinacSimPy (Ctrl-Q) ...', None)) # added menu item; was SIMAC
+        self.actionExit.setText(_translate('MainWindow', 'Exit LinacSimPy (Ctrl-Q) ...', None)) # added menu item
         return
-# okay decompiling simacMainWidget.pyc

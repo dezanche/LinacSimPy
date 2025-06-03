@@ -1,9 +1,3 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: simacMain.py
-# Compiled at: 2023-12-20 14:35:14
-
 # ND changes for Python 3
 # changed from PyQt4 to PyQt5 (also in matplotlib.backends and in other files)
 # changed "views" folder to "window_widgets" to avoid confusion with python views module
@@ -165,7 +159,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         self.actionCreate_config_file.triggered.connect(self.showCreate_config_file)
         #added
         self.actionExit.triggered.connect(self.close)
-        self.actionAbout_SIMAC.triggered.connect(self.showAboutSimac)
+        self.actionAbout_LinacSimPy.triggered.connect(self.showAboutSimac)
         self.actionLicense.triggered.connect(self.showLicense)
         self.actionTutorial.triggered.connect(self.showTutorial)
         self.actionTheory.triggered.connect(self.showTheory)
@@ -356,11 +350,11 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         ret = self.dialogConfigFile.exec_()
 
     def showAboutSimac(self):
-        file = open('./About_SIMAC.txt', 'r')
+        file = open('./About_LinacSimPy.txt', 'r')
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText(file.read())
-        msg.setWindowTitle('About LinacSimPy')    # was SIMAC
+        msg.setWindowTitle('About LinacSimPy')
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
@@ -733,4 +727,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-# okay decompiling simacMain.py.pyc
