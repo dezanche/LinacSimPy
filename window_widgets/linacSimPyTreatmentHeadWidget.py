@@ -1,8 +1,4 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: views\simacTreatmentHeadWidget.pyc
-# Compiled at: 2016-09-20 08:28:14
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -723,4 +719,4 @@ class Ui_Form(object):
         self.lineEdit_dD_Ion.setText(_translate('Form', '0', None))
         self.label_10.setText(_translate('Form', 'Measurement Depth [cm]', None))
         return
-# okay decompiling simacTreatmentHeadWidget.pyc
+

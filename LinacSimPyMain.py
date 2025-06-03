@@ -18,36 +18,36 @@ from PyQt5.QtGui import QKeySequence, QDoubleValidator #*
 #from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 #from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 #from matplotlib.figure import Figure
-from window_widgets import LinacSimPyMainWidget
-from window_widgets import simacKlystronForm
-from window_widgets import simacAcceleratorForm
-from window_widgets import simacTreatmentHeadForm
-from window_widgets import simacConfigDialog
-#from window_widgets import simacDoubleValidator # redundant fix for some problem behaviour
-from controllers import simacController
+from window_widgets import linacSimPyMainWidget
+from window_widgets import linacSimPyKlystronForm
+from window_widgets import linacSimPyAcceleratorForm
+from window_widgets import linacSimPyTreatmentHeadForm
+from window_widgets import linacSimPyConfigDialog
+
+from controllers import linacSimPyController
 from models import LinacModel
 
-class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
+class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
-        self.formKlystron = simacKlystronForm.simacKlystronForm()
-        self.formAccelerator = simacAcceleratorForm.simacAcceleratorForm()
-        self.formTreatmentHead = simacTreatmentHeadForm.simacTreatmentHeadForm()
+        self.formKlystron = linacSimPyKlystronForm.linacSimPyKlystronForm()
+        self.formAccelerator = linacSimPyAcceleratorForm.linacSimPyAcceleratorForm()
+        self.formTreatmentHead = linacSimPyTreatmentHeadForm.linacSimPyTreatmentHeadForm()
         self.formKlystron.show()
         self.formKlystron.hide()
-        self.dialogConfigFile = simacConfigDialog.simacConfigDialog()
-        self.simacLinacModel = LinacModel.LinacModel()
-        self.simacController = simacController.simacController()
-        self.simacController.setLinacModel(self.simacLinacModel)
-        self.simacController.setMainView(self)
-        self.formKlystron.setController(self.simacController)
-        self.simacController.setKlystronView(self.formKlystron)
-        self.formAccelerator.setController(self.simacController)
-        self.simacController.setAcceleratorView(self.formAccelerator)
-        self.formTreatmentHead.setController(self.simacController)
-        self.simacController.setTreatmentHeadView(self.formTreatmentHead)
+        self.dialogConfigFile = linacSimPyConfigDialog.linacSimPyConfigDialog()
+        self.linacSimPyLinacModel = LinacModel.LinacModel()
+        self.linacSimPyController = linacSimPyController.linacSimPyController()
+        self.linacSimPyController.setLinacModel(self.linacSimPyLinacModel)
+        self.linacSimPyController.setMainView(self)
+        self.formKlystron.setController(self.linacSimPyController)
+        self.linacSimPyController.setKlystronView(self.formKlystron)
+        self.formAccelerator.setController(self.linacSimPyController)
+        self.linacSimPyController.setAcceleratorView(self.formAccelerator)
+        self.formTreatmentHead.setController(self.linacSimPyController)
+        self.linacSimPyController.setTreatmentHeadView(self.formTreatmentHead)
         self.formKlystron.updateCalculation()
         self.formAccelerator.updateCalculation()
         self.pushButton_Klystron.clicked.connect(self.showKlystronWidget)
@@ -96,60 +96,59 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         self.lineEdit_Omega.textEdited.connect(self.updateLinacModel_Omega_2)
         self.lineEdit_Omega.returnPressed.connect(self.updateLinacModel_Omega_3)
         self.lineEdit_Omega.setValidator(QDoubleValidator(2855.5, 2856.5, 2))
-        #validator = simacDoubleValidator.SimacDoubleValidator(2855.5, 2856.5, 2, self)
+
         self.lineEdit_P_AC_Kly.textEdited.connect(self.updateLinacModel_P_AC_Kly_2)
         self.lineEdit_P_AC_Kly.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_P_AC_Kly.setValidator(QDoubleValidator(0, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(0, 200, 0, self)
+
         self.lineEdit_v_Kly.textEdited.connect(self.updateLinacModel_v_Kly_2)
         self.lineEdit_v_Kly.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_v_Kly.setValidator(QDoubleValidator(0, 150, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(0, 150, 0, self)
+
         self.lineEdit_Tau.textEdited.connect(self.updateLinacModel_Tau_2)
         self.lineEdit_Tau.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_Tau.setValidator(QDoubleValidator(2, 4, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(2, 4, 0, self)
+
         self.lineEdit_v_Gun.textEdited.connect(self.updateLinacModel_v_Gun_2)
         self.lineEdit_v_Gun.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_v_Gun.setValidator(QDoubleValidator(0, 20, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(0, 20, 0, self)
+
         self.lineEdit_v_Grid.textEdited.connect(self.updateLinacModel_v_Grid_2)
         self.lineEdit_v_Grid.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_v_Grid.setValidator(QDoubleValidator(-200, 0, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(-200, 0, 0, self)
-        #self.lineEdit_Omega.setValidator(validator)
+
         self.lineEdit_i_Coil_BMag.textEdited.connect(self.updateLinacModel_i_Coil_BMag_2)
         self.lineEdit_i_Coil_BMag.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_i_Coil_BMag.setValidator(QDoubleValidator(0, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(0, 200, 0, self)
+
         self.lineEdit_i_Pos_Rad.textEdited.connect(self.updateLinacModel_i_Pos_Rad_2)
         self.lineEdit_i_Pos_Rad.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_i_Pos_Rad.setValidator(QDoubleValidator(-200, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(-200, 200, 0, self)
+
         self.lineEdit_i_Pos_Trans.textEdited.connect(self.updateLinacModel_i_Pos_Trans_2)
         self.lineEdit_i_Pos_Trans.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_i_Pos_Trans.setValidator(QDoubleValidator(200, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(-200, 200, 0, self)
+
         self.lineEdit_i_Ang_Rad.textEdited.connect(self.updateLinacModel_i_Ang_Rad_2)
         self.lineEdit_i_Ang_Rad.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_i_Ang_Rad.setValidator(QDoubleValidator(-200, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(-200, 200, 0, self)
+
         self.lineEdit_i_Ang_Trans.textEdited.connect(self.updateLinacModel_i_Ang_Trans_2)
         self.lineEdit_i_Ang_Trans.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_i_Ang_Trans.setValidator(QDoubleValidator(-200, 200, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(-200, 200, 0, self)
+
         self.lineEdit_Rad_Jaw.textEdited.connect(self.updateLinacModel_Rad_Jaw_2)
         self.lineEdit_Rad_Jaw.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_Rad_Jaw.setValidator(QDoubleValidator(3, 20, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(3, 20, 0, self)
+
         self.lineEdit_Trans_Jaw.textEdited.connect(self.updateLinacModel_Trans_Jaw_2)
         self.lineEdit_Trans_Jaw.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_Trans_Jaw.setValidator(QDoubleValidator(3, 20, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(3, 20, 0, self)
+
         self.lineEdit_d_Tank.textEdited.connect(self.updateLinacModel_d_Tank_2)
         self.lineEdit_d_Tank.returnPressed.connect(self.updateLinacModel)
         self.lineEdit_d_Tank.setValidator(QDoubleValidator(0, 30, 0))
-        #validator = simacDoubleValidator.SimacDoubleValidator(0, 30, 0, self)
+
         self.actionLoad_ini.triggered.connect(self.showLoad_ini)
         self.actionSave_ini.triggered.connect(self.showSave_ini)
         self.actionLoad_Exercise.triggered.connect(self.showLoad_Exercise)
@@ -159,7 +158,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         self.actionCreate_config_file.triggered.connect(self.showCreate_config_file)
         #added
         self.actionExit.triggered.connect(self.close)
-        self.actionAbout_LinacSimPy.triggered.connect(self.showAboutSimac)
+        self.actionAbout_LinacSimPy.triggered.connect(self.showAboutLinacSimPy)
         self.actionLicense.triggered.connect(self.showLicense)
         self.actionTutorial.triggered.connect(self.showTutorial)
         self.actionTheory.triggered.connect(self.showTheory)
@@ -239,14 +238,14 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(initData['Trans_Jaw']))
             self.lineEdit_d_Tank.setText(self.strFormatter.format(initData['d_Tank']))
             self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))
-            self.setWindowTitle('LinacSimPy - ' + fname)    # was SIMAC
+            self.setWindowTitle('LinacSimPy - ' + fname)
 
     def showSave_ini(self):
         if self.parameterLog.__len__() <= 0:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText('No parameter set so far!')
-            msg.setWindowTitle('LinacSimPy')  #was SIMAC
+            msg.setWindowTitle('LinacSimPy')
             msg.setStandardButtons(QMessageBox.Ok)
             retval = msg.exec_()
             return
@@ -278,19 +277,19 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
             try: # TO DO: catch empty file name + missing exercise name below?
                 with open(fname, 'r') as (f):
                     exerciseParams = pickle.load(f)
-                    self.simacLinacModel.ExerciseName = exerciseParams[0]
-                    self.simacLinacModel.Rad_Av_SMag = exerciseParams[1]
-                    self.simacLinacModel.Trans_Av_SMag = exerciseParams[2]
-                    self.simacLinacModel.dRad_Av_SMag = exerciseParams[3]
-                    self.simacLinacModel.dTrans_Av_SMag = exerciseParams[4]
+                    self.linacSimPyLinacModel.ExerciseName = exerciseParams[0]
+                    self.linacSimPyLinacModel.Rad_Av_SMag = exerciseParams[1]
+                    self.linacSimPyLinacModel.Trans_Av_SMag = exerciseParams[2]
+                    self.linacSimPyLinacModel.dRad_Av_SMag = exerciseParams[3]
+                    self.linacSimPyLinacModel.dTrans_Av_SMag = exerciseParams[4]
             except Exception as error:
                 pass
 
     def showValidate_Exercise(self):
-        if self.simacLinacModel.ExerciseName:# throws AttributeError: 'LinacModel' object has no attribute 'ExerciseName'
+        if self.linacSimPyLinacModel.ExerciseName:# throws AttributeError: 'LinacModel' object has no attribute 'ExerciseName'
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText(self.simacLinacModel.ExerciseName)
+            msg.setText(self.linacSimPyLinacModel.ExerciseName)
             msg.setWindowTitle('Current Exercise')
             msg.setStandardButtons(QMessageBox.Ok)
             retval = msg.exec_()
@@ -301,7 +300,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText('No parameter set so far!')
-            msg.setWindowTitle('LinacSimPy')    #was SIMAC
+            msg.setWindowTitle('LinacSimPy')
             msg.setStandardButtons(QMessageBox.Ok)
             retval = msg.exec_()
             return
@@ -349,7 +348,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
             return
         ret = self.dialogConfigFile.exec_()
 
-    def showAboutSimac(self):
+    def showAboutLinacSimPy(self):
         file = open('./About_LinacSimPy.txt', 'r')
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
@@ -387,7 +386,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         self.formTreatmentHead.show()
 
     def updateView(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.lineEdit_S_Ion_R.setText(self.strFormatter.format(linacModel.S_Ion_R))
         self.lineEdit_S_Ion_T.setText(self.strFormatter.format(linacModel.S_Ion_T))
         self.lineEdit_Flatness_R.setText(self.strFormatter.format(linacModel.Flatness_R))
@@ -426,20 +425,20 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_Trans_Jaw.valueChanged.disconnect(self.updateLinacModel_Trans_Jaw)
         self.horizontalScrollBar_d_Tank.valueChanged.disconnect(self.updateLinacModel_d_Tank)
         # added int() to fix "TypeError: setValue(self, int): argument 1 has unexpected type 'float'"
-        self.horizontalScrollBar_Omega.setValue(int(self.simacLinacModel.Omega * 100))
-        self.horizontalScrollBar_P_AC_Kly.setValue(int(self.simacLinacModel.P_AC_Kly))
-        self.horizontalScrollBar_v_Kly.setValue(int(self.simacLinacModel.v_Kly))
-        self.horizontalScrollBar_Tau.setValue(int(self.simacLinacModel.Tau * 10))
-        self.horizontalScrollBar_v_Gun.setValue(int(self.simacLinacModel.v_Gun))
-        self.horizontalScrollBar_v_Grid.setValue(int(self.simacLinacModel.v_Grid))
-        self.horizontalScrollBar_i_Coil_BMag.setValue(int(self.simacLinacModel.i_Coil_BMag))
-        self.horizontalScrollBar_i_Pos_Rad.setValue(int(self.simacLinacModel.i_Pos_Rad))
-        self.horizontalScrollBar_i_Pos_Trans.setValue(int(self.simacLinacModel.i_Pos_Trans))
-        self.horizontalScrollBar_i_Ang_Rad.setValue(int(self.simacLinacModel.i_Ang_Rad))
-        self.horizontalScrollBar_i_Ang_Trans.setValue(int(self.simacLinacModel.i_Ang_Trans))
-        self.horizontalScrollBar_Rad_Jaw.setValue(int(self.simacLinacModel.Rad_Jaw))
-        self.horizontalScrollBar_Trans_Jaw.setValue(int(self.simacLinacModel.Trans_Jaw))
-        self.horizontalScrollBar_d_Tank.setValue(int(self.simacLinacModel.d_Tank))
+        self.horizontalScrollBar_Omega.setValue(int(self.linacSimPyLinacModel.Omega * 100))
+        self.horizontalScrollBar_P_AC_Kly.setValue(int(self.linacSimPyLinacModel.P_AC_Kly))
+        self.horizontalScrollBar_v_Kly.setValue(int(self.linacSimPyLinacModel.v_Kly))
+        self.horizontalScrollBar_Tau.setValue(int(self.linacSimPyLinacModel.Tau * 10))
+        self.horizontalScrollBar_v_Gun.setValue(int(self.linacSimPyLinacModel.v_Gun))
+        self.horizontalScrollBar_v_Grid.setValue(int(self.linacSimPyLinacModel.v_Grid))
+        self.horizontalScrollBar_i_Coil_BMag.setValue(int(self.linacSimPyLinacModel.i_Coil_BMag))
+        self.horizontalScrollBar_i_Pos_Rad.setValue(int(self.linacSimPyLinacModel.i_Pos_Rad))
+        self.horizontalScrollBar_i_Pos_Trans.setValue(int(self.linacSimPyLinacModel.i_Pos_Trans))
+        self.horizontalScrollBar_i_Ang_Rad.setValue(int(self.linacSimPyLinacModel.i_Ang_Rad))
+        self.horizontalScrollBar_i_Ang_Trans.setValue(int(self.linacSimPyLinacModel.i_Ang_Trans))
+        self.horizontalScrollBar_Rad_Jaw.setValue(int(self.linacSimPyLinacModel.Rad_Jaw))
+        self.horizontalScrollBar_Trans_Jaw.setValue(int(self.linacSimPyLinacModel.Trans_Jaw))
+        self.horizontalScrollBar_d_Tank.setValue(int(self.linacSimPyLinacModel.d_Tank))
         self.horizontalScrollBar_Omega.valueChanged.connect(self.updateLinacModel_Omega)
         self.horizontalScrollBar_P_AC_Kly.valueChanged.connect(self.updateLinacModel_P_AC_Kly)
         self.horizontalScrollBar_v_Kly.valueChanged.connect(self.updateLinacModel_v_Kly)
@@ -566,10 +565,10 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText('You must set beam ON and pick an energy first!')
-            msg.setWindowTitle('LinacSimPy')    #was SIMAC
+            msg.setWindowTitle('LinacSimPy')
             msg.setStandardButtons(QMessageBox.Ok)
             retval = msg.exec_()
-        paramSetting = LinacModel.SimacSetting()
+        paramSetting = LinacModel.LinacSimPySetting()
         index = self.comboBox_PRF.currentIndex()
         if index == 0:
             value = 60
@@ -612,7 +611,7 @@ class simacMainForm(QMainWindow, LinacSimPyMainWidget.Ui_MainWindow):
         if paramSetting.Energy == 0:
             pass
         else:
-            self.simacController.updateLinacModelWithParameters(paramSetting)
+            self.linacSimPyController.updateLinacModelWithParameters(paramSetting)
         self.parameterLog.append(paramSetting)
 
     def updateLinacModel_Omega(self):
@@ -719,7 +718,7 @@ def main():
     sys.stdout = open('output.log', 'w')
     # was QtGui.QApplication but gives error
     app = QApplication(sys.argv)
-    mainForm = simacMainForm()
+    mainForm = linacSimPyMainForm()
     mainForm.show()
     #app.exec_() still worked but not current?
     sys.exit(app.exec_())

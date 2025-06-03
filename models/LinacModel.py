@@ -1,14 +1,10 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: models\LinacModel.pyc
-# Compiled at: 2016-09-19 09:17:08
+
 import math, numpy as np
 from scipy import special
 from scipy import interpolate
 #import sys
 
-class SimacSetting:
+class LinacSimPySetting:
 
     def __init__(self):
         self.PRF = 60.0

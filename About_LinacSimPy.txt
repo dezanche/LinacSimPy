@@ -1,7 +1,7 @@
 SIMAC 0.5 alpha
 
 SIMAC is medical linear accelerator simulation software
-Copyright (C) 2025 Alberta Health Services
+Copyright © 2025 Alberta Health Services
 
 LinacSimPy is licensed under the GPL...
 

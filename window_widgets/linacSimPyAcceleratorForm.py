@@ -1,8 +1,4 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: views\simacAcceleratorForm.pyc
-# Compiled at: 2016-06-14 13:13:49
+
 import sys, os, random, math, numpy as np, numpy.matlib
 from scipy import special
 from scipy import interpolate
@@ -15,9 +11,9 @@ import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import QtGui
-from window_widgets import simacAcceleratorWidget
+from window_widgets import linacSimPyAcceleratorWidget
 
-class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
+class linacSimPyAcceleratorForm(QWidget, linacSimPyAcceleratorWidget.Ui_Form):
 
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -45,7 +41,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.strFormatter = '{0:.2f}'
 
     def setController(self, controller):
-        self.simacController = controller
+        self.linacSimPyController = controller
 
     def updateCalculation(self):
         self.calculateChannelA()
@@ -60,7 +56,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.updateOscilloscopeGraph()
 
     def calculateChannelA(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         if self.radioButton_ChA_1.isChecked():
             self.sample = np.loadtxt('resources/parameters/LDPWR216.txt')
             self.typicalValue = 0.0
@@ -84,7 +80,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.updateOscilloscopeGraph()
 
     def calculateChannelB(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         if self.radioButton_ChB_1.isChecked():
             self.sampleB = np.loadtxt('resources/parameters/LDPWR216.txt')
             self.typicalValueB = 0.0
@@ -135,7 +131,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.updateOscilloscopeGraph()
 
     def calculateTDiv(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         iValue_Time = self.comboBox_TDiv.currentIndex() + 1
         dExp = int(math.floor((iValue_Time - 1) / 3)) - 6
         if (iValue_Time - 1) % 3 == 0:
@@ -147,7 +143,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.dStep_Time = min(linacModel.Tau * 1e-06, self.dDiv_Time / 1000.0)
 
     def updateView(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.lineEdit_P_Acc.setText(self.strFormatter.format(float(linacModel.P_Acc)))
         self.lineEdit_i_Acc.setText(self.strFormatter.format(float(linacModel.i_Acc)))
         self.lineEdit_i_Tar.setText(self.strFormatter.format(linacModel.i_Tar))
@@ -190,7 +186,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
     def updateGraph(self):
         """ Redraws the figure
         """
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.axes.cla()
         self.axes.grid(True)
         self.axes.set_title('Accelerator Characteristic Curves (Load Lines)', fontsize=8)    # changed title text
@@ -243,7 +239,7 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.axes_scope.grid(color='green', alpha=1.0, linewidth='2')
 
     def updateOscilloscopeGraph(self):
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         dVector_TimeA, dVector_VoltageA = linacModel.updateSingal(self.typicalValue, self.singalLevel, self.noiseLevel, self.sample, self.dMax_VoltageA, self.dStep_Time, self.dDiv_Time)
         dVector_TimeB, dVector_VoltageB = linacModel.updateSingal(self.typicalValueB, self.singalLevelB, self.noiseLevelB, self.sampleB, self.dMax_VoltageB, self.dStep_Time, self.dDiv_Time)
         self.axes_scope.cla()
@@ -254,4 +250,4 @@ class simacAcceleratorForm(QWidget, simacAcceleratorWidget.Ui_Form):
         self.axes_scope.plot(dVector_TimeB, dVector_VoltageB - 0.25, color='green')
         self.axes_scope.grid(color='green', alpha=1.0, linewidth='2')
         self.canvas_scope.draw()
-# okay decompiling simacAcceleratorForm.pyc
+

@@ -1,8 +1,4 @@
-# uncompyle6 version 3.9.0
-# Python bytecode version base 2.7 (62211)
-# Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]
-# Embedded file name: views\simacTreatmentHeadForm.pyc
-# Compiled at: 2016-09-19 09:17:08
+
 import sys, os, random, math, numpy as np, numpy.matlib
 from scipy import special
 from scipy import interpolate
@@ -16,9 +12,9 @@ import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import QtGui
-from window_widgets import simacTreatmentHeadWidget
+from window_widgets import linacSimPyTreatmentHeadWidget
 
-class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
+class linacSimPyTreatmentHeadForm(QWidget, linacSimPyTreatmentHeadWidget.Ui_Form):
 
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -27,7 +23,7 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
         self.strFormatter = '{0:.2f}'
 
     def setController(self, controller):
-        self.simacController = controller
+        self.linacSimPyController = controller
 
     def createFigures(self):
         self.createBLGraph()
@@ -37,7 +33,7 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
     def updateView(self):
         if self.createdFigures == False:
             self.createFigures()
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.lineEdit_T_Av_Tar.setText(self.strFormatter.format(linacModel.T_Av_Tar))
         self.lineEdit_i_Tar.setText(self.strFormatter.format(linacModel.i_Tar))
         self.lineEdit_Eff_Tar.setText(self.strFormatter.format(linacModel.Eff_Tar))
@@ -62,7 +58,7 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
         self.canvas_BL = FigureCanvas(self.figure_BL)
         self.gridLayout_BL.addWidget(self.canvas_BL)
         iN_Points = 100
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.Rad_Tar = np.arange(-8 * linacModel.Rad_StDev_SMag, 8 * linacModel.Rad_StDev_SMag, 16 * linacModel.Rad_StDev_SMag / (iN_Points - 1))
         self.Trans_Tar = np.arange(-8 * linacModel.Trans_StDev_SMag, 8 * linacModel.Trans_StDev_SMag, 16 * linacModel.Trans_StDev_SMag / (iN_Points - 1))
         self.dRad_Tar = np.arange(-24 * linacModel.dRad_StDev_SMag, 24 * linacModel.dRad_StDev_SMag, 48 * linacModel.dRad_StDev_SMag / (iN_Points - 1))
@@ -108,7 +104,7 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
     def updateBLGraph(self):
         """ Redraws the figure
         """
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         majorFormatter = FormatStrFormatter('%1.2f')
         self.axes_BL1.cla()
         self.axes_BL1.set_title('Beam Position at Target', fontsize=7)
@@ -169,7 +165,7 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
     def updateBRGraph(self):
         """ Redraws the figure
         """
-        linacModel = self.simacController.getLinacModel()
+        linacModel = self.linacSimPyController.getLinacModel()
         self.axes_BR1.cla()
         majorLocatorX = MultipleLocator(10)
         majorLocatorY = MultipleLocator(1000)
@@ -199,4 +195,4 @@ class simacTreatmentHeadForm(QWidget, simacTreatmentHeadWidget.Ui_Form):
         self.axes_BR2.tick_params(axis='x', labelsize=7)
         self.axes_BR2.tick_params(axis='y', labelsize=7)
         self.canvas_BR.draw()
-# okay decompiling simacTreatmentHeadForm.pyc
+
