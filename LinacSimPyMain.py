@@ -1,3 +1,5 @@
+# add PREAMBLE with licence info here
+
 # ND changes for Python 3
 # changed from PyQt4 to PyQt5 (also in matplotlib.backends and in other files)
 # changed "views" folder to "window_widgets" to avoid confusion with python views module
@@ -7,7 +9,7 @@ import csv, json, sys, pickle, webbrowser #math, os, random
 # removed some unused imports
 from PyQt5 import QtWidgets #QtGui, 
 from PyQt5.QtCore import Qt  #QObject, 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QShortcut, QMessageBox, QFileDialog #*
+from PyQt5.QtWidgets import QMainWindow, QApplication, QShortcut, QMessageBox, QFileDialog #was *
 from PyQt5.QtGui import QKeySequence, QDoubleValidator #*
 #import numpy as np, numpy.matlib
 #from scipy import interpolate
@@ -561,7 +563,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_P_AC_Kly.setText('67.0')
 
     def updateLinacModel(self):
-        if self.comboBox_Energy.currentIndex() == 0:
+        if self.comboBox_Energy.currentIndex() == 0: # or ~self.pushButton_BeamOn.isChecked() needed but doesn't work
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText('You must set beam ON and pick an energy first!')

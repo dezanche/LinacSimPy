@@ -1,16 +1,17 @@
+# ND removed some unused imports
 
-import sys, os, random, math, numpy as np, numpy.matlib
+import math, numpy as np, numpy.matlib #sys, os, random, 
 from scipy import special
-from scipy import interpolate
-import matplotlib
+#from scipy import interpolate
+#import matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+#from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5 import QtGui
+from PyQt5.QtWidgets import QWidget #was*
+#from PyQt5.QtCore import *
+#from PyQt5 import QtGui
 from window_widgets import linacSimPyKlystronWidget
 
 class linacSimPyKlystronForm(QWidget, linacSimPyKlystronWidget.Ui_Form):
@@ -298,8 +299,9 @@ class linacSimPyKlystronForm(QWidget, linacSimPyKlystronWidget.Ui_Form):
         self.axes_scope.spines['left'].set_linewidth(4)
         self.axes_scope.spines['right'].set_linewidth(4)
         self.axes_scope.grid(color='green', alpha=1.0, linewidth='2')
-        fig_size = self.figure_scope.get_size_inches()
-        w, h = fig_size[0], fig_size[1]
+        # these variables are not used for anything
+        #fig_size = self.figure_scope.get_size_inches()
+        #w, h = fig_size[0], fig_size[1]
         plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
 
     def updateOscilloscopeGraph(self):

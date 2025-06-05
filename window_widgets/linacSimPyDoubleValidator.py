@@ -1,6 +1,7 @@
+# unused because config dialog doesn't work
 
 from PyQt5.QtGui import QDoubleValidator, QValidator
-from sys import float_info
+#from sys import float_info  #sys already imported
 
 class LinacSimPyDoubleValidator(QDoubleValidator):
     """
@@ -12,7 +13,7 @@ class LinacSimPyDoubleValidator(QDoubleValidator):
 
     def validate(self, input, pos):
         state, pos = QDoubleValidator.validate(self, input, pos)
-        if state == QValidator.Intermediate and input.toDouble() > bottom() and input.toDouble() < top():
+        if state == QValidator.Intermediate and input.toDouble() > bottom() and input.toDouble() < top():   # should be something.top() and .bottom()
             return (QValidator.Acceptable, pos)
         else:
             return (

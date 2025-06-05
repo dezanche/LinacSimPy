@@ -1,16 +1,17 @@
+# ND removed some unused imports
 
-import sys, os, random, math, numpy as np, numpy.matlib
-from scipy import special
-from scipy import interpolate
-import matplotlib
+import math, numpy as np, numpy.matlib #sys, os, random, 
+#from scipy import special
+#from scipy import interpolate
+#import matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+#from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from matplotlib import rcParams
-import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5 import QtGui
+#import matplotlib.pyplot as plt
+from PyQt5.QtWidgets import QWidget #was *
+#from PyQt5.QtCore import *
+#from PyQt5 import QtGui
 from window_widgets import linacSimPyAcceleratorWidget
 
 class linacSimPyAcceleratorForm(QWidget, linacSimPyAcceleratorWidget.Ui_Form):

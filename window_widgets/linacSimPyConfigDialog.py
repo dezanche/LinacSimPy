@@ -1,11 +1,12 @@
+# probably unused because config dialog doesn't work
 
 #import sys, os, random
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+#from PyQt5 import QtGui
+from PyQt5.QtWidgets import QDialog, QFileDialog #was*
+#from PyQt5.QtCore import *
 import pickle
-from window_widgets import linacSimPyConfigWidget, linacSimPyDoubleValidator
-from array import array
+from window_widgets import linacSimPyConfigWidget #, linacSimPyDoubleValidator unused
+#from array import array
 
 class linacSimPyConfigDialog(QDialog, linacSimPyConfigWidget.Ui_Dialog_configFile):
 
