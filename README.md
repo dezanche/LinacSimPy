@@ -29,8 +29,26 @@ If the system cannot find Python in its search `path` you'll get an error (or Wi
 # Version History
 
 ## Credits
+LinacSimPy is based on SIMAC version 3.4, by Marco Carlone, Miller MacPherson, Rhys Anderson, Michael Lamey, and Kevin Wang.\
+Theory and technical details of SIMAC the were published in [JACMP, Vol. 16, No. 3, 2015](https://doi.org/10.1120%2Fjacmp.v16i3.5139).
 
 ## Changelog
 
-# Licenses
+# Legal Statements
+
+## Copyright
+
+© 2025 Alberta Health Services, Medical Physics
+
+LinacSimPy is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) as published by the Free Software Foundation, either version 3 of the License, or any later version.\
+LinacSimPy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) for more details.
+
+![CClicense](https://i.creativecommons.org/l/by-nd/4.0/88x31.png)\
+All other original content in this repository (including this README file) is licensed under a [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/).
+
+## Disclaimer
+
+This material is intended for general information only and is provided on an "as is", "where is" basis. Although reasonable efforts were made to confirm the accuracy of the information, Alberta Health Services does not make any representation or warranty, express, implied or statutory, as to the accuracy, reliability, completeness, applicability or fitness for a particular purpose of such information. This material is not a substitute for the advice of a qualified health professional. Alberta Health Services expressly disclaims all liability for the use of these materials, and for any claims, actions, demands or suits arising from such use.
+
+
 
