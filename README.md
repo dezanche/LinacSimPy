@@ -1,7 +1,7 @@
 # LinacSimPy
-Medical linear accelerators (LINACs) are machines that deliver doses of ionizing radiation to treat tumours and other medical conditions.
-LinacSimPy is an interactive model of a linac for educational purposes. It simulates how the operating parameters of a linac affect measurable properties of the output beam such as dose rate, symmetry, and uniformity.
-Typical users of LinacSimPy include teaching programs for medical physicists, radiation therapists and service personnel.
+Medical linear accelerators (LINACs) are machines that use electron beams to deliver ionizing radiation to treat tumours and other medical conditions.
+LinacSimPy is an interactive model of a linac meant for use in educational programs for medical physicists, radiation therapists and service personnel.
+It simulates how the operating parameters of a linac affect measurable properties of the output beam such as dose rate, symmetry, and uniformity.
 
 ![LinacSimPy windows](/resources/images/LinacSimPy_collage.png)
 
@@ -30,9 +30,22 @@ If the system cannot find Python in its search `path` you'll get an error (or Wi
 
 ## Credits
 LinacSimPy is based on SIMAC version 3.4, by Marco Carlone, Miller MacPherson, Rhys Anderson, Michael Lamey, and Kevin Wang.\
-Theory and technical details of SIMAC the were published in [JACMP, Vol. 16, No. 3, 2015](https://doi.org/10.1120%2Fjacmp.v16i3.5139).
+Theory and technical details of SIMAC were published in [JACMP, Vol. 16, No. 3, 2015](https://doi.org/10.1120%2Fjacmp.v16i3.5139).
 
 ## Changelog
+This is a brief summary of the changes made to obtain LinacSimPy:
+- ported PyQt4 calls to corresponding calls in PyQt5
+- various fixes to update from Python 2.7 to 3.10, to matplotlib 3.10.0
+- added tooltips to buttons
+- added keyboard shortcuts to common operations
+- toggle color (red, green) of beam on/off button depending on state
+- added confirmation dialog before closing
+- added information message when calculating without beam on and energy selected (idle)
+- turning off linac no longer resets energy and values
+- replaced copyrighted images (Simac\Resources\Images) with cc-by versions + added tooltips to original file when hovering over
+- changed name to LinacSimPy
+- layout changes to accommodate longer labels for clarity
+- changed `us` to use the proper micro symbol, i.e., $\mu$
 
 # Legal Statements
 
