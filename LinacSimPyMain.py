@@ -1,16 +1,38 @@
-# add PREAMBLE with licence info here
+# LinacSimPy is an interactive model of a medical linear accelerator (LINAC)
 
-# ND changes for Python 3
+# © 2025 Alberta Health Services, Medical Physics
+
+# This file is part of LinacSimPy.
+# LinacSimPy is free software: you can redistribute it and/or modify it under the terms 
+# of the GNU General Public License as published by the Free Software Foundation, either 
+# version 3 of the License, or (at your option) any later version.
+# LinacSimPy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+# See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License along with LinacSimPy. 
+# If not, see <https://www.gnu.org/licenses/>.
+
+# This material is intended for general information only and is provided on an "as is", "where is" 
+# basis. Although reasonable efforts were made to confirm the accuracy of the information, 
+# Alberta Health Services does not make any representation or warranty, express, implied or 
+# statutory, as to the accuracy, reliability, completeness, applicability or fitness for a particular 
+# purpose of such information. This material is not a substitute for the advice of a qualified health 
+# professional. Alberta Health Services expressly disclaims all liability for the use of these 
+# materials, and for any claims, actions, demands or suits arising from such use.
+
+
+# ND changes
 # changed from PyQt4 to PyQt5 (also in matplotlib.backends and in other files)
 # changed "views" folder to "window_widgets" to avoid confusion with python views module
+# added startup splash screen showing license logo
 
 import csv, json, sys, pickle, webbrowser #math, os, random
 
 # removed some unused imports
 from PyQt5 import QtWidgets #QtGui, 
 from PyQt5.QtCore import Qt  #QObject, 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QShortcut, QMessageBox, QFileDialog #was *
-from PyQt5.QtGui import QKeySequence, QDoubleValidator #*
+from PyQt5.QtWidgets import QMainWindow, QApplication, QSplashScreen, QShortcut, QMessageBox, QFileDialog #was *
+from PyQt5.QtGui import QKeySequence, QDoubleValidator, QPixmap #*
 #import numpy as np, numpy.matlib
 #from scipy import interpolate
 #from scipy import special
@@ -716,10 +738,21 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
 
 def main():
+    print('© 2025 Alberta Health Services, Medical Physics\n'
+          'This program comes with ABSOLUTELY NO WARRANTY\n'
+          'LinacSimPy is free software, and you are welcome to redistribute it under certain conditions\n'
+          'See the HELP menu for details')
     sys.stderr = open('error.log', 'w')
     sys.stdout = open('output.log', 'w')
     # was QtGui.QApplication but gives error
     app = QApplication(sys.argv)
+    
+    # ND added splash screen
+    splash_pix = QPixmap('resources\images\gplv3-or-later.png')
+    splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+    splash.show()
+    #time.sleep(3)   # unnecessary
+
     mainForm = linacSimPyMainForm()
     mainForm.show()
     #app.exec_() still worked but not current?
