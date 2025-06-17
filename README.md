@@ -40,6 +40,7 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 - added keyboard shortcuts to common operations
 - toggle color (red, green) of beam on/off button depending on state
 - added confirmation dialog before closing
+- added splash screen at startup
 - added information message when calculating without beam on and energy selected (idle)
 - turning off linac no longer resets energy and values
 - replaced copyrighted images (Simac\Resources\Images) with cc-by versions + added tooltips to original file when hovering over
@@ -52,7 +53,7 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 ## Copyright
 
 © 2025 Alberta Health Services, Medical Physics
-
+![GPLv3](/resources/images/gplv3-or-later.png)
 LinacSimPy is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) as published by the Free Software Foundation, either version 3 of the License, or any later version.\
 LinacSimPy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) for more details.
 
