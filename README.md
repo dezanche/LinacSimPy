@@ -6,7 +6,7 @@ It simulates how the operating parameters of a linac affect measurable propertie
 ![LinacSimPy windows](/resources/images/LinacSimPy_collage.png)
 
 # Running LinacSimPy
-LinacSimPy is supplied as Python source code to ensure it's portable. Despite not being an executable, it's *very easy* to install and should run on anything that can run Python.
+LinacSimPy is supplied as Python source code to ensure it is compact, portable and can be modified. Despite not being an executable, it's *very easy* to install and should run on anything that can run Python.
 
 ## Requirements
 LinacSimPy requires Python 3.* and has been tested under both Windows and Linux. It uses several standard packages that are listed in `requirements.txt`.
@@ -18,13 +18,14 @@ Download the archive as a `zip file` and extract it to a suitable (empty) direct
 
 
 ## Usage
-From the command line (`CMD` terminal in Windows) `cd` to the directory where you saved the LinacSimPy archive. On a correctly-configured system running `python LinacSimPyMain.py` should launch the program and display the main window. The first time you do this may take a few seconds while Python creates the `*.pyc` files.
+From the command line prompt (`CMD` terminal in Windows) `cd` to the directory where you saved the LinacSimPy archive. On a correctly-configured system executing `python LinacSimPyMain.py` from the command line should launch the program and display the main window. The first time you do this may take a few seconds while Python creates the `*.pyc` files.
 
 If the system cannot find Python in its search `path` you'll get an error (or Windows launches the Microsoft Store app). There are many guides online on how to fix this by adding Python to your `path`. Alternatively you can specify the complete path to the Python executable like this example on Windows:
 
 ```>C:\Program Files\Python310\python LinacSimPyMain.py```
 
-
+## Feedback
+Please report bugs, post comments and questions by creating an [issue](https://github.com/dezanche/LinacSimPy/issues) (see above).
 
 # Version History
 
@@ -43,7 +44,7 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 - added splash screen at startup
 - added information message when calculating without beam on and energy selected (idle)
 - turning off linac no longer resets energy and values
-- replaced copyrighted images (Simac\Resources\Images) with cc-by versions + added tooltips to original file when hovering over
+- replaced copyrighted images with cc-by versions and added tooltips to original file when hovering over
 - changed name to LinacSimPy
 - layout changes to accommodate longer labels for clarity
 - changed `us` to use the proper micro symbol, i.e., $\mu$
@@ -53,7 +54,8 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 ## Copyright
 
 © 2025 Alberta Health Services, Medical Physics
-![GPLv3](/resources/images/gplv3-or-later.png)
+
+![GPLv3](/resources/images/gplv3-or-later.png)\
 LinacSimPy is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) as published by the Free Software Foundation, either version 3 of the License, or any later version.\
 LinacSimPy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) for more details.
 
