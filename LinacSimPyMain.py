@@ -375,14 +375,16 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
     def showAboutLinacSimPy(self):
         file = open('./About_LinacSimPy.txt', 'r')
         msg = QMessageBox()
+        msg.setTextFormat(Qt.RichText)      # displays hyperlinks but not actually functional; have to embed a QLabel or QTextBrowser within the QMessageBox
+        #msg.setOpenExternalLinks(True)
         msg.setIcon(QMessageBox.Information)
         msg.setText(file.read())
         msg.setWindowTitle('About LinacSimPy')
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
-    def showLicense(self):      # UPDATE!
-        url = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'
+    def showLicense(self):      # updated
+        url = 'https://www.gnu.org/licenses/gpl-3.0.html'
         webbrowser.open(url, new=1)
 
     def showTutorial(self):
