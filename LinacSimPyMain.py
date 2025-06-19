@@ -750,7 +750,7 @@ def main():
     app = QApplication(sys.argv)
     
     # ND added splash screen
-    splash_pix = QPixmap('resources\images\gplv3-or-later.png')
+    splash_pix = QPixmap('resources/images/gplv3-or-later.png')
     splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
     splash.show()
     #time.sleep(3)   # unnecessary
