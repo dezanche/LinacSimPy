@@ -49,6 +49,15 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 - layout changes to accommodate longer labels for clarity
 - changed `us` to use the proper micro symbol, i.e., $\mu$
 
+## Known Issues
+- windows and items inside are not resizable
+- input and output quantities are not grouped clearly in the main window
+- general layout of the main window can be improved
+- input values can be entered only using the sliders, not with the text boxes
+- cannot reset to default state without restarting 
+- grid voltage control is disabled
+- some operations in the File menu cause a crash
+
 # Legal Statements
 
 ## Copyright
