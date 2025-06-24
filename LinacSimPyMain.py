@@ -42,6 +42,11 @@ from PyQt5.QtGui import QKeySequence, QDoubleValidator, QPixmap #*
 #from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 #from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 #from matplotlib.figure import Figure
+
+# 2 lines added for error when called from linux command line
+import matplotlib
+matplotlib.use('QtAgg')
+
 from window_widgets import linacSimPyMainWidget
 from window_widgets import linacSimPyKlystronForm
 from window_widgets import linacSimPyAcceleratorForm
