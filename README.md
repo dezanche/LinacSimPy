@@ -16,7 +16,7 @@ Unless you are using Python for other work and need additional functionality, th
 You must ensure that all the required packages are present by running `pip install requirements.txt` or the equivalent command for your Python distribution (e.g., Conda in Anaconda).
 
 ## Installation
-Download the archive as a `zip file` and extract it to a suitable (empty) directory on your machine. You can also use the `git clone` command if you have `git` installed on your system.
+Download the archive as a `zip file` (**Code > Download Zip** in the menu above or click [here](https://github.com/dezanche/LinacSimPy/archive/refs/heads/main.zip)) and extract it to a suitable (empty) directory on your machine. You can also use the `git clone` command if you have `git` installed on your system.
 
 
 ## Usage
