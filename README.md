@@ -1,4 +1,5 @@
 # LinacSimPy
+![Static Badge](https://img.shields.io/badge/Python-stuff?style=flat&logo=python&color=lime)\
 Medical linear accelerators (LINACs) are machines that use electron beams to deliver ionizing radiation to treat tumours and other medical conditions.
 LinacSimPy is an interactive model of a linac meant for use in educational programs for medical physicists, radiation therapists and service personnel.
 It simulates how the operating parameters of a linac affect measurable properties of the output beam such as dose rate, symmetry, and uniformity.
