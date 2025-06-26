@@ -14,7 +14,7 @@ The basic capabilities of LinacSimPy are described in [this YouTube video](https
 ## Requirements
 LinacSimPy requires Python 3.* and has been tested under both Windows and Linux. It uses several standard packages that are listed in `requirements.txt`.
 Unless you are using Python for other work and need additional functionality, the installers from the [Python Software Foundation](https://www.python.org/) are sufficient.
-You must ensure that all the required packages are present by running `pip install requirements.txt` or the equivalent command for your Python distribution (e.g., Conda in Anaconda).
+You must ensure that all the required packages are present by running `pip install -r requirements.txt` or the equivalent command for your Python distribution (e.g., Conda in Anaconda).
 
 ## Installation
 Download the archive as a `zip file` (**Code > Download Zip** in the menu above or click [here](https://github.com/dezanche/LinacSimPy/archive/refs/heads/main.zip)) and extract it to a suitable (empty) directory on your machine. You can also use the `git clone` command if you have `git` installed on your system.
