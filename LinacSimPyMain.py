@@ -64,8 +64,8 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.formKlystron = linacSimPyKlystronForm.linacSimPyKlystronForm()
         self.formAccelerator = linacSimPyAcceleratorForm.linacSimPyAcceleratorForm()
         self.formTreatmentHead = linacSimPyTreatmentHeadForm.linacSimPyTreatmentHeadForm()
-        self.formKlystron.show()
-        self.formKlystron.hide()
+        #self.formKlystron.show()
+        #self.formKlystron.hide()
         self.dialogConfigFile = linacSimPyConfigDialog.linacSimPyConfigDialog()
         self.linacSimPyLinacModel = LinacModel.LinacModel()
         self.linacSimPyController = linacSimPyController.linacSimPyController()
@@ -401,20 +401,29 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         webbrowser.open(url, new=1)
 
     def showKlystronWidget(self):
-        self.formKlystron.updateView()
-        self.formKlystron.show()
-        self.formKlystron.raise_()
-        self.formKlystron.activateWindow()
-
+        if self.formKlystron.isVisible():
+            self.formKlystron.hide()
+        else:
+            self.formKlystron.updateView()
+            self.formKlystron.show()
+            self.formKlystron.raise_()
+            self.formKlystron.activateWindow()
+        
     def showAcceleratorWidget(self):
-        self.formAccelerator.updateView()
-        self.formAccelerator.raise_()
-        self.formAccelerator.show()
+        if self.formAccelerator.isVisible():
+            self.formAccelerator.hide()
+        else:
+            self.formAccelerator.updateView()
+            self.formAccelerator.raise_()
+            self.formAccelerator.show()
 
     def showTreatmentHeadWidget(self):
-        self.formTreatmentHead.updateView()
-        self.formTreatmentHead.raise_()
-        self.formTreatmentHead.show()
+        if self.formTreatmentHead.isVisible():
+            self.formTreatmentHead.hide()
+        else:
+            self.formTreatmentHead.updateView()
+            self.formTreatmentHead.raise_()
+            self.formTreatmentHead.show()
 
     def updateView(self):
         linacModel = self.linacSimPyController.getLinacModel()
