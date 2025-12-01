@@ -48,14 +48,15 @@ class Ui_Form(object):
 
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8('Form'))
-        Form.resize(802, 650)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
-        Form.setSizePolicy(sizePolicy)
-        Form.setMinimumSize(QtCore.QSize(800, 650))
-        Form.setMaximumSize(QtCore.QSize(1000, 650))
+        # commented out statements that lock window size
+        # Form.resize(802, 650)
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
+        # Form.setSizePolicy(sizePolicy)
+        # Form.setMinimumSize(QtCore.QSize(800, 650))
+        # Form.setMaximumSize(QtCore.QSize(1000, 650))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)

@@ -64,7 +64,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.formKlystron = linacSimPyKlystronForm.linacSimPyKlystronForm()
         self.formAccelerator = linacSimPyAcceleratorForm.linacSimPyAcceleratorForm()
         self.formTreatmentHead = linacSimPyTreatmentHeadForm.linacSimPyTreatmentHeadForm()
-        #self.formKlystron.show()
+        #self.formKlystron.show()   # unnecessary
         #self.formKlystron.hide()
         self.dialogConfigFile = linacSimPyConfigDialog.linacSimPyConfigDialog()
         self.linacSimPyLinacModel = LinacModel.LinacModel()
@@ -402,7 +402,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
     def showKlystronWidget(self):
         if self.formKlystron.isVisible():
-            self.formKlystron.hide()
+            self.formKlystron.hide()    # added button close window functionality
         else:
             self.formKlystron.updateView()
             self.formKlystron.show()
