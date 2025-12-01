@@ -33,7 +33,7 @@ Please report bugs, post comments and questions by creating an [issue](https://g
 # Version History
 
 ## Credits
-LinacSimPy is based on SIMAC version 3.4, by Marco Carlone, Miller MacPherson, Rhys Anderson, Michael Lamey, and Kevin Wang.\
+LinacSimPy is based on SIMAC version 0.3.4, by Marco Carlone, Miller MacPherson, Rhys Anderson, Michael Lamey, and Kevin Wang.\
 Theory and technical details of SIMAC were published in [JACMP, Vol. 16, No. 3, 2015](https://doi.org/10.1120%2Fjacmp.v16i3.5139).
 
 ## Changelog
@@ -51,9 +51,9 @@ This is a brief summary of the changes made to obtain LinacSimPy:
 - changed name to LinacSimPy
 - layout changes to accommodate longer labels for clarity
 - changed `us` to use the proper micro symbol, i.e., $\mu$
+- restored ability to resize windows
 
 ## Known Issues
-- windows and items inside are not resizable
 - input and output quantities are not grouped clearly in the main window
 - general layout of the main window can be improved
 - input values can be entered only using the sliders, not with the text boxes
