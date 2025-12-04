@@ -123,6 +123,8 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
         self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
         
+        # looks like the edit boxes were designed for entry but they don't work
+        
         self.lineEdit_Omega.textEdited.connect(self.updateLinacModel_Omega_2)
         self.lineEdit_Omega.returnPressed.connect(self.updateLinacModel_Omega_3)
         self.lineEdit_Omega.setValidator(QDoubleValidator(2855.5, 2856.5, 2))
@@ -267,7 +269,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(initData['Rad_Jaw']))
             self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(initData['Trans_Jaw']))
             self.lineEdit_d_Tank.setText(self.strFormatter.format(initData['d_Tank']))
-            self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))
+            #self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))  # dose rate is a result, not a setup parameter
             self.setWindowTitle('LinacSimPy - ' + fname)
 
     def showSave_ini(self):
@@ -280,7 +282,8 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             retval = msg.exec_()
             return
         paramSetting = self.parameterLog[-1]
-        initData = {'Energy': paramSetting.Energy, 'PRF': paramSetting.PRF, 
+        initData = {'Energy': paramSetting.Energy, 
+                    'PRF': paramSetting.PRF, 
            'P_AC_Kly': paramSetting.P_AC_Kly, 
            'Omega': paramSetting.Omega, 
            'v_Kly': paramSetting.v_Kly, 
@@ -294,8 +297,8 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
            'Rad_Jaw': paramSetting.Rad_Jaw, 
            'i_Ang_Trans': paramSetting.i_Ang_Trans, 
            'Trans_Jaw': paramSetting.Trans_Jaw, 
-           'd_Tank': paramSetting.d_Tank, 
-           'dD_Ion': paramSetting.dD_Ion}
+           'd_Tank': paramSetting.d_Tank} 
+           #'dD_Ion': paramSetting.dD_Ion}  # dose rate is a result, not a setup parameter
         fname, _filter = QFileDialog.getSaveFileName(self, 'Save Linac status (.json)', '.', "(*.json)")
         if fname:
             with open(fname, 'w') as (f):
@@ -360,13 +363,13 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
                  'i_Pos_Trans', 'i_Ang_Rad', 'i_Ang_Trans', 
                  'Rad_Jaw', 'Trans_Jaw', 
                  'd_Tank', 
-                 'dD_Ion'])
+                 'dD_Ion'])   # dose rate is a result, not a setup parameter
                 for param in paramList:
                     writer.writerow([ # next line was throwing AttributeError: 'str' object has no attribute 'PRF'
                      param.PRF, param.Tau, param.Energy, param.Omega, param.P_AC_Kly, param.v_Kly, param.v_Gun,
                      param.i_Coil_BMag, param.v_Grid,
                      param.i_Pos_Rad, param.i_Pos_Trans, param.i_Ang_Rad, param.i_Ang_Trans, param.Rad_Jaw,
-                     param.Trans_Jaw, param.d_Tank, param.dD_Ion])
+                     param.Trans_Jaw, param.d_Tank, param.dD_Ion])  # dose rate is a result, not a setup parameter
 
         else:
             return
@@ -578,6 +581,9 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         #self.comboBox_PRF.setCurrentIndex(0)
         #self.updateLinacModel_Energy()
 
+# this should be reading values from a central definition (e.g., file(s)) and also updating the "sliders"
+# just doing a self.updateView() doesn't work
+# self.updateLinacModel() causes a crash
     def updateLinacModel_Energy(self):
         if self.comboBox_Energy.currentIndex() == 0:
             self.lineEdit_d_Tank.setText('0')
@@ -593,6 +599,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_v_Kly.setText('104.0')
             self.lineEdit_v_Grid.setText('0.0')
             self.lineEdit_P_AC_Kly.setText('182.0')
+            #self.horizontalScrollBar_P_AC_Kly.setValue(182.0) works but not in all cases; the lineEdit boxes are the ground truth
         elif self.comboBox_Energy.currentIndex() == 2:
             self.lineEdit_d_Tank.setText('3.0')
             self.lineEdit_i_Coil_BMag.setText('155.0')
@@ -626,6 +633,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         else:
             value = 0
         paramSetting.PRF = value
+        # these should grab values directly from the scroll bars (spin boxes)
         paramSetting.Tau = float(self.lineEdit_Tau.text())
         paramSetting.Omega = float(self.lineEdit_Omega.text())
         paramSetting.P_AC_Kly = float(self.lineEdit_P_AC_Kly.text())
