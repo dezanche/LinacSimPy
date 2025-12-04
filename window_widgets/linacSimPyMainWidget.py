@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.frame_BeamOn, 0, 0, 1, 1)
 
-        ## parameters frame
+        ## parameters readout frame
         self.frame_Parameters = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -496,7 +496,7 @@ class Ui_MainWindow(object):
         self.lineEdit_d_Tank.setObjectName(_fromUtf8('lineEdit_d_Tank'))
         self.gridLayout_3.addWidget(self.lineEdit_d_Tank, 7, 6, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout_3)
-        self.gridLayout.addWidget(self.frame_Parameters, 0, 1, 1, 2)
+        self.gridLayout.addWidget(self.frame_Parameters, 1, 0, 1, 2) # was 0, 1, 1, 2
 
         ## photo frame
         self.frame_5 = QtWidgets.QFrame(self.centralwidget)
@@ -528,7 +528,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.label_8)
         self.gridLayout.addWidget(self.frame_5, 1, 2, 2, 1)
 
-        ## sliders frame
+        ## sliders input frame
+        # startup values are either hardcoded (self.horizontalScrollBar_Tau.setProperty('value', 3)) or missing altogether
+        
         self.frame_Sliders = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -614,10 +616,10 @@ class Ui_MainWindow(object):
         self.label_32.setAlignment(QtCore.Qt.AlignCenter)
         self.label_32.setObjectName(_fromUtf8('label_32'))
         self.gridLayout_4.addWidget(self.label_32, 0, 3, 1, 1)
-        self.horizontalScrollBar_v_Kly = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_v_Kly = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_v_Kly.setEnabled(False)
         self.horizontalScrollBar_v_Kly.setMaximum(150)
-        self.horizontalScrollBar_v_Kly.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_v_Kly.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_v_Kly.setObjectName(_fromUtf8('horizontalScrollBar_v_Kly'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_v_Kly, 6, 0, 1, 1)
         self.label_35 = QtWidgets.QLabel(self.frame_Sliders)
@@ -629,13 +631,13 @@ class Ui_MainWindow(object):
         self.label_35.setAlignment(QtCore.Qt.AlignCenter)
         self.label_35.setObjectName(_fromUtf8('label_35'))
         self.gridLayout_4.addWidget(self.label_35, 2, 2, 1, 1)
-        self.horizontalScrollBar_Omega = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_Omega = QtWidgets.QDoubleSpinBox(self.frame_Sliders)  #was QScrollBar
         self.horizontalScrollBar_Omega.setEnabled(False)
-        self.horizontalScrollBar_Omega.setMinimum(285550)
-        self.horizontalScrollBar_Omega.setMaximum(285650)
-        self.horizontalScrollBar_Omega.setSingleStep(5)
-        self.horizontalScrollBar_Omega.setProperty('value', 285600)
-        self.horizontalScrollBar_Omega.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalScrollBar_Omega.setMinimum(2855.50)   # previously 285550
+        self.horizontalScrollBar_Omega.setMaximum(2856.50)   # previously 285650
+        self.horizontalScrollBar_Omega.setSingleStep(0.05)   # previously 5
+        self.horizontalScrollBar_Omega.setProperty('value', 2856.00)   # previously 285600
+        #self.horizontalScrollBar_Omega.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_Omega.setObjectName(_fromUtf8('horizontalScrollBar_Omega'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_Omega, 1, 0, 1, 1)
         self.label_31 = QtWidgets.QLabel(self.frame_Sliders)
@@ -683,90 +685,92 @@ class Ui_MainWindow(object):
         self.label_40.setAlignment(QtCore.Qt.AlignCenter)
         self.label_40.setObjectName(_fromUtf8('label_40'))
         self.gridLayout_4.addWidget(self.label_40, 5, 3, 1, 1)
-        self.horizontalScrollBar_Tau = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_Tau = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_Tau.setEnabled(False)
-        self.horizontalScrollBar_Tau.setMinimum(20)
-        self.horizontalScrollBar_Tau.setMaximum(40)
-        self.horizontalScrollBar_Tau.setProperty('value', 30)
-        self.horizontalScrollBar_Tau.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalScrollBar_Tau.setMinimum(2)  # was 20
+        self.horizontalScrollBar_Tau.setMaximum(4)    # was 40
+        # change step size
+        self.horizontalScrollBar_Tau.setSingleStep(0.1)
+        self.horizontalScrollBar_Tau.setProperty('value', 3)    # was 30
+        #self.horizontalScrollBar_Tau.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_Tau.setObjectName(_fromUtf8('horizontalScrollBar_Tau'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_Tau, 1, 1, 1, 1)
-        self.horizontalScrollBar_i_Pos_Rad = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_i_Pos_Rad = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_i_Pos_Rad.setEnabled(False)
         self.horizontalScrollBar_i_Pos_Rad.setMinimum(-200)
         self.horizontalScrollBar_i_Pos_Rad.setMaximum(200)
-        self.horizontalScrollBar_i_Pos_Rad.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_i_Pos_Rad.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_i_Pos_Rad.setObjectName(_fromUtf8('horizontalScrollBar_i_Pos_Rad'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_i_Pos_Rad, 1, 2, 1, 1)
-        self.horizontalScrollBar_v_Grid = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_v_Grid = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_v_Grid.setEnabled(False)
         self.horizontalScrollBar_v_Grid.setMinimum(-200)
         self.horizontalScrollBar_v_Grid.setMaximum(0)
-        self.horizontalScrollBar_v_Grid.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_v_Grid.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_v_Grid.setObjectName(_fromUtf8('horizontalScrollBar_v_Grid'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_v_Grid, 6, 1, 1, 1)
-        self.horizontalScrollBar_Trans_Jaw = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_Trans_Jaw = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_Trans_Jaw.setEnabled(False)
         self.horizontalScrollBar_Trans_Jaw.setMinimum(3)
         self.horizontalScrollBar_Trans_Jaw.setMaximum(20)
         self.horizontalScrollBar_Trans_Jaw.setProperty('value', 15)
-        self.horizontalScrollBar_Trans_Jaw.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_Trans_Jaw.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_Trans_Jaw.setObjectName(_fromUtf8('horizontalScrollBar_Trans_Jaw'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_Trans_Jaw, 3, 3, 1, 1)
-        self.horizontalScrollBar_i_Pos_Trans = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_i_Pos_Trans = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_i_Pos_Trans.setEnabled(False)
         self.horizontalScrollBar_i_Pos_Trans.setMinimum(-200)
         self.horizontalScrollBar_i_Pos_Trans.setMaximum(200)
-        self.horizontalScrollBar_i_Pos_Trans.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_i_Pos_Trans.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_i_Pos_Trans.setObjectName(_fromUtf8('horizontalScrollBar_i_Pos_Trans'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_i_Pos_Trans, 3, 2, 1, 1)
-        self.horizontalScrollBar_Rad_Jaw = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_Rad_Jaw = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_Rad_Jaw.setEnabled(False)
         self.horizontalScrollBar_Rad_Jaw.setMinimum(3)
         self.horizontalScrollBar_Rad_Jaw.setMaximum(20)
         self.horizontalScrollBar_Rad_Jaw.setProperty('value', 15)
-        self.horizontalScrollBar_Rad_Jaw.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_Rad_Jaw.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_Rad_Jaw.setObjectName(_fromUtf8('horizontalScrollBar_Rad_Jaw'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_Rad_Jaw, 1, 3, 1, 1)
-        self.horizontalScrollBar_P_AC_Kly = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_P_AC_Kly = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_P_AC_Kly.setEnabled(False)
         self.horizontalScrollBar_P_AC_Kly.setMaximum(200)
-        self.horizontalScrollBar_P_AC_Kly.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_P_AC_Kly.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_P_AC_Kly.setObjectName(_fromUtf8('horizontalScrollBar_P_AC_Kly'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_P_AC_Kly, 3, 0, 1, 1)
-        self.horizontalScrollBar_v_Gun = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_v_Gun = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_v_Gun.setEnabled(False)
         self.horizontalScrollBar_v_Gun.setMaximum(20)
-        self.horizontalScrollBar_v_Gun.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_v_Gun.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_v_Gun.setObjectName(_fromUtf8('horizontalScrollBar_v_Gun'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_v_Gun, 3, 1, 1, 1)
-        self.horizontalScrollBar_i_Ang_Rad = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_i_Ang_Rad = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_i_Ang_Rad.setEnabled(False)
         self.horizontalScrollBar_i_Ang_Rad.setMinimum(-200)
         self.horizontalScrollBar_i_Ang_Rad.setMaximum(200)
-        self.horizontalScrollBar_i_Ang_Rad.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_i_Ang_Rad.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_i_Ang_Rad.setObjectName(_fromUtf8('horizontalScrollBar_i_Ang_Rad'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_i_Ang_Rad, 6, 2, 1, 1)
-        self.horizontalScrollBar_d_Tank = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_d_Tank = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_d_Tank.setEnabled(False)
         self.horizontalScrollBar_d_Tank.setAutoFillBackground(False)
         self.horizontalScrollBar_d_Tank.setMaximum(30)
-        self.horizontalScrollBar_d_Tank.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalScrollBar_d_Tank.setInvertedAppearance(False)
-        self.horizontalScrollBar_d_Tank.setInvertedControls(False)
+        #self.horizontalScrollBar_d_Tank.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_d_Tank.setInvertedAppearance(False)
+        #self.horizontalScrollBar_d_Tank.setInvertedControls(False)
         self.horizontalScrollBar_d_Tank.setObjectName(_fromUtf8('horizontalScrollBar_d_Tank'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_d_Tank, 6, 3, 1, 1)
-        self.horizontalScrollBar_i_Coil_BMag = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_i_Coil_BMag = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_i_Coil_BMag.setEnabled(False)
         self.horizontalScrollBar_i_Coil_BMag.setMaximum(200)
-        self.horizontalScrollBar_i_Coil_BMag.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_i_Coil_BMag.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_i_Coil_BMag.setObjectName(_fromUtf8('horizontalScrollBar_i_Coil_BMag'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_i_Coil_BMag, 8, 1, 1, 1)
-        self.horizontalScrollBar_i_Ang_Trans = QtWidgets.QScrollBar(self.frame_Sliders)
+        self.horizontalScrollBar_i_Ang_Trans = QtWidgets.QDoubleSpinBox(self.frame_Sliders) # was QScrollBar
         self.horizontalScrollBar_i_Ang_Trans.setEnabled(False)
         self.horizontalScrollBar_i_Ang_Trans.setMinimum(-200)
         self.horizontalScrollBar_i_Ang_Trans.setMaximum(200)
-        self.horizontalScrollBar_i_Ang_Trans.setOrientation(QtCore.Qt.Horizontal)
+        #self.horizontalScrollBar_i_Ang_Trans.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalScrollBar_i_Ang_Trans.setObjectName(_fromUtf8('horizontalScrollBar_i_Ang_Trans'))
         self.gridLayout_4.addWidget(self.horizontalScrollBar_i_Ang_Trans, 8, 2, 1, 1)
 # "calculate" pushbutton
@@ -777,9 +781,9 @@ class Ui_MainWindow(object):
         self.pushButton_UpdateLinacModel.setStyleSheet("font-weight: bold")
         self.gridLayout_4.addWidget(self.pushButton_UpdateLinacModel, 8, 3, 1, 1)
         self.gridLayout_9.addLayout(self.gridLayout_4, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_Sliders, 2, 0, 1, 2)
+        self.gridLayout.addWidget(self.frame_Sliders, 0, 1, 1, 2) # was 2, 0, 1, 2
 
-        ## pushbuttons frame
+        ## window pushbuttons frame
         self.frame_PushButtons = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -824,7 +828,7 @@ class Ui_MainWindow(object):
         self.pushButton_TreatmentHead.setToolTip('Open Treatment Head window (Ctrl-T)')
         self.horizontalLayout.addWidget(self.pushButton_TreatmentHead)
         self.gridLayout_8.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_PushButtons, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.frame_PushButtons, 2, 0, 1, 2) # was 1, 0, 1, 2
 
         ## menu bar
         self.gridLayout_5.addLayout(self.gridLayout, 0, 0, 1, 1)

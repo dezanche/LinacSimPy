@@ -719,7 +719,7 @@ class Ui_Form(object):
         self.label_13.setText(_translate('Form', 'Beam Edge IP (target) [cm]', None))
         self.lineEdit_d_Tank.setText(_translate('Form', '0', None))
         # call this Output parameters? Results?
-        self.label_2.setText(_translate('Form', 'Treatment Head Parameters', None))
+        self.label_2.setText(_translate('Form', 'Treatment Head and Beam Parameters', None))
         self.lineEdit_T_Av_Tar.setText(_translate('Form', '0', None))
         self.label_5.setText(_translate('Form', 'Radial Jaw Position [cm]', None))
         self.lineEdit_i_Tar.setText(_translate('Form', '0', None))

@@ -122,6 +122,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_Rad_Jaw.valueChanged.connect(self.updateLinacModel_Rad_Jaw)
         self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
         self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
+        
         self.lineEdit_Omega.textEdited.connect(self.updateLinacModel_Omega_2)
         self.lineEdit_Omega.returnPressed.connect(self.updateLinacModel_Omega_3)
         self.lineEdit_Omega.setValidator(QDoubleValidator(2855.5, 2856.5, 2))
@@ -465,10 +466,10 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_Trans_Jaw.valueChanged.disconnect(self.updateLinacModel_Trans_Jaw)
         self.horizontalScrollBar_d_Tank.valueChanged.disconnect(self.updateLinacModel_d_Tank)
         # added int() to fix "TypeError: setValue(self, int): argument 1 has unexpected type 'float'"
-        self.horizontalScrollBar_Omega.setValue(int(self.linacSimPyLinacModel.Omega * 100))
+        self.horizontalScrollBar_Omega.setValue(int(self.linacSimPyLinacModel.Omega))   # previously included * 100
         self.horizontalScrollBar_P_AC_Kly.setValue(int(self.linacSimPyLinacModel.P_AC_Kly))
         self.horizontalScrollBar_v_Kly.setValue(int(self.linacSimPyLinacModel.v_Kly))
-        self.horizontalScrollBar_Tau.setValue(int(self.linacSimPyLinacModel.Tau * 10))
+        self.horizontalScrollBar_Tau.setValue(int(self.linacSimPyLinacModel.Tau))   # previously included  * 10
         self.horizontalScrollBar_v_Gun.setValue(int(self.linacSimPyLinacModel.v_Gun))
         self.horizontalScrollBar_v_Grid.setValue(int(self.linacSimPyLinacModel.v_Grid))
         self.horizontalScrollBar_i_Coil_BMag.setValue(int(self.linacSimPyLinacModel.i_Coil_BMag))
@@ -655,7 +656,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.parameterLog.append(paramSetting)
 
     def updateLinacModel_Omega(self):
-        self.lineEdit_Omega.setText(str(self.horizontalScrollBar_Omega.value() / 100.0))
+        self.lineEdit_Omega.setText(str(self.horizontalScrollBar_Omega.value()))   # previously included / 100.0
 
     def updateLinacModel_P_AC_Kly(self):
         self.lineEdit_P_AC_Kly.setText(str(self.horizontalScrollBar_P_AC_Kly.value()))
@@ -664,7 +665,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.lineEdit_v_Kly.setText(str(self.horizontalScrollBar_v_Kly.value()))
 
     def updateLinacModel_Tau(self):
-        self.lineEdit_Tau.setText(str(self.horizontalScrollBar_Tau.value() / 10.0))
+        self.lineEdit_Tau.setText(str(self.horizontalScrollBar_Tau.value()))   # previously included / 10.0
 
     def updateLinacModel_v_Gun(self):
         self.lineEdit_v_Gun.setText(str(self.horizontalScrollBar_v_Gun.value()))
@@ -700,7 +701,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
     def updateLinacModel_Omega_2(self):
         value = float(self.lineEdit_Omega.text())
         if value >= 2855.5 and value <= 2856.5:
-            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()) * 100)
+            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
 
     def updateLinacModel_Omega_3(self):
         value = float(self.lineEdit_Omega.text())
@@ -708,7 +709,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.updateLinacModel()
         else:
             self.lineEdit_Omega.setText(2856.0)
-            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()) * 100)
+            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
 
     def updateLinacModel_P_AC_Kly_2(self):
         self.horizontalScrollBar_P_AC_Kly.setValue(float(self.lineEdit_P_AC_Kly.text()))
@@ -718,7 +719,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
     def updateLinacModel_Tau_2(self):
         # looks wrong
-        self.horizontalScrollBar_v_Gun.setValue(float(self.lineEdit_Tau.text()) * 10)
+        self.horizontalScrollBar_v_Gun.setValue(float(self.lineEdit_Tau.text()))   # previously included * 10
 
     def updateLinacModel_v_Gun_2(self):
         # looks wrong
