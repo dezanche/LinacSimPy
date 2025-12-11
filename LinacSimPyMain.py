@@ -108,20 +108,20 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.shortcut = QShortcut(shortcut, self)
         self.shortcut.activated.connect(self.close)
 # input scrollbars
-        self.horizontalScrollBar_Omega.valueChanged.connect(self.updateLinacModel_Omega)
-        self.horizontalScrollBar_P_AC_Kly.valueChanged.connect(self.updateLinacModel_P_AC_Kly)
-        self.horizontalScrollBar_v_Kly.valueChanged.connect(self.updateLinacModel_v_Kly)
-        self.horizontalScrollBar_Tau.valueChanged.connect(self.updateLinacModel_Tau)
-        self.horizontalScrollBar_v_Gun.valueChanged.connect(self.updateLinacModel_v_Gun)
-        self.horizontalScrollBar_v_Grid.valueChanged.connect(self.updateLinacModel_v_Grid)
-        self.horizontalScrollBar_i_Coil_BMag.valueChanged.connect(self.updateLinacModel_i_Coil_BMag)
-        self.horizontalScrollBar_i_Pos_Rad.valueChanged.connect(self.updateLinacModel_i_Pos_Rad)
-        self.horizontalScrollBar_i_Pos_Trans.valueChanged.connect(self.updateLinacModel_i_Pos_Trans)
-        self.horizontalScrollBar_i_Ang_Rad.valueChanged.connect(self.updateLinacModel_i_Ang_Rad)
-        self.horizontalScrollBar_i_Ang_Trans.valueChanged.connect(self.updateLinacModel_i_Ang_Trans)
-        self.horizontalScrollBar_Rad_Jaw.valueChanged.connect(self.updateLinacModel_Rad_Jaw)
-        self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
-        self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
+        # self.horizontalScrollBar_Omega.valueChanged.connect(self.updateLinacModel_Omega)
+        # self.horizontalScrollBar_P_AC_Kly.valueChanged.connect(self.updateLinacModel_P_AC_Kly)
+        # self.horizontalScrollBar_v_Kly.valueChanged.connect(self.updateLinacModel_v_Kly)
+        # self.horizontalScrollBar_Tau.valueChanged.connect(self.updateLinacModel_Tau)
+        # self.horizontalScrollBar_v_Gun.valueChanged.connect(self.updateLinacModel_v_Gun)
+        # self.horizontalScrollBar_v_Grid.valueChanged.connect(self.updateLinacModel_v_Grid)
+        # self.horizontalScrollBar_i_Coil_BMag.valueChanged.connect(self.updateLinacModel_i_Coil_BMag)
+        # self.horizontalScrollBar_i_Pos_Rad.valueChanged.connect(self.updateLinacModel_i_Pos_Rad)
+        # self.horizontalScrollBar_i_Pos_Trans.valueChanged.connect(self.updateLinacModel_i_Pos_Trans)
+        # self.horizontalScrollBar_i_Ang_Rad.valueChanged.connect(self.updateLinacModel_i_Ang_Rad)
+        # self.horizontalScrollBar_i_Ang_Trans.valueChanged.connect(self.updateLinacModel_i_Ang_Trans)
+        # self.horizontalScrollBar_Rad_Jaw.valueChanged.connect(self.updateLinacModel_Rad_Jaw)
+        # self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
+        # self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
         
         # looks like the edit boxes were designed for entry but they don't work
         # commenting out all 14 doesn't cause problems
@@ -257,20 +257,34 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
                 PRFCurrentIndex = 0
             self.comboBox_PRF.setCurrentIndex(PRFCurrentIndex)
             self.lineEdit_Omega.setText(self.strFormatter.format(initData['Omega']))
-            self.lineEdit_P_AC_Kly.setText(self.strFormatter.format(initData['P_AC_Kly']))
-            self.lineEdit_v_Kly.setText(self.strFormatter.format(initData['v_Kly']))
-            self.lineEdit_Tau.setText(self.strFormatter.format(initData['Tau']))
-            self.lineEdit_v_Gun.setText(self.strFormatter.format(initData['v_Gun']))
-            self.lineEdit_v_Grid.setText(self.strFormatter.format(initData['v_Grid']))
-            self.lineEdit_i_Coil_BMag.setText(self.strFormatter.format(initData['i_Coil_BMag']))
-            self.lineEdit_i_Pos_Rad.setText(self.strFormatter.format(initData['i_Pos_Rad']))
-            self.lineEdit_i_Pos_Trans.setText(self.strFormatter.format(initData['i_Pos_Trans']))
-            self.lineEdit_i_Ang_Rad.setText(self.strFormatter.format(initData['i_Ang_Rad']))
-            self.lineEdit_i_Ang_Trans.setText(self.strFormatter.format(initData['i_Ang_Trans']))
-            self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(initData['Rad_Jaw']))
-            self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(initData['Trans_Jaw']))
-            self.lineEdit_d_Tank.setText(self.strFormatter.format(initData['d_Tank']))
+            # self.lineEdit_P_AC_Kly.setText(self.strFormatter.format(initData['P_AC_Kly']))
+            # self.lineEdit_v_Kly.setText(self.strFormatter.format(initData['v_Kly']))
+            # self.lineEdit_Tau.setText(self.strFormatter.format(initData['Tau']))
+            # self.lineEdit_v_Gun.setText(self.strFormatter.format(initData['v_Gun']))
+            # self.lineEdit_v_Grid.setText(self.strFormatter.format(initData['v_Grid']))
+            # self.lineEdit_i_Coil_BMag.setText(self.strFormatter.format(initData['i_Coil_BMag']))
+            # self.lineEdit_i_Pos_Rad.setText(self.strFormatter.format(initData['i_Pos_Rad']))
+            # self.lineEdit_i_Pos_Trans.setText(self.strFormatter.format(initData['i_Pos_Trans']))
+            # self.lineEdit_i_Ang_Rad.setText(self.strFormatter.format(initData['i_Ang_Rad']))
+            # self.lineEdit_i_Ang_Trans.setText(self.strFormatter.format(initData['i_Ang_Trans']))
+            # self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(initData['Rad_Jaw']))
+            # self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(initData['Trans_Jaw']))
+            # self.lineEdit_d_Tank.setText(self.strFormatter.format(initData['d_Tank']))
             #self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))  # dose rate is a result, not a setup parameter
+            # set loaded values in spin boxes
+            self.horizontalScrollBar_P_AC_Kly.setValue(initData['P_AC_Kly'])
+            self.horizontalScrollBar_v_Kly.setValue(initData['v_Kly'])
+            self.horizontalScrollBar_Tau.setValue(initData['Tau'])
+            self.horizontalScrollBar_v_Gun.setValue(initData['v_Gun'])
+            self.horizontalScrollBar_v_Grid.setValue(initData['v_Grid'])
+            self.horizontalScrollBar_i_Coil_BMag.setValue(initData['i_Coil_BMag'])
+            self.horizontalScrollBar_i_Pos_Rad.setValue(initData['i_Pos_Rad'])
+            self.horizontalScrollBar_i_Pos_Trans.setValue(initData['i_Pos_Trans'])
+            self.horizontalScrollBar_i_Ang_Rad.setValue(initData['i_Ang_Rad'])
+            self.horizontalScrollBar_i_Ang_Trans.setValue(initData['i_Ang_Trans'])
+            self.horizontalScrollBar_Rad_Jaw.setValue(initData['Rad_Jaw'])
+            self.horizontalScrollBar_Trans_Jaw.setValue(initData['Trans_Jaw'])
+            self.horizontalScrollBar_d_Tank.setValue(initData['d_Tank'])
             self.setWindowTitle('LinacSimPy - ' + fname)
 
     def showSave_ini(self):
@@ -432,46 +446,48 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
     def updateView(self):
         linacModel = self.linacSimPyController.getLinacModel()
-        # uncommenting these prevents defaults from loading correctly in model when energy is selected
+        # model inputs
+        # self.lineEdit_Omega.setText(self.strFormatter.format(linacModel.Omega))
+        # self.lineEdit_P_AC_Kly.setText(self.strFormatter.format(linacModel.P_AC_Kly))
+        # self.lineEdit_v_Kly.setText(self.strFormatter.format(linacModel.v_Kly))
+        # self.lineEdit_Tau.setText(self.strFormatter.format(linacModel.Tau))
+        # self.lineEdit_v_Gun.setText(self.strFormatter.format(linacModel.v_Gun))
+        # self.lineEdit_v_Grid.setText(self.strFormatter.format(linacModel.v_Grid))
+        # self.lineEdit_i_Coil_BMag.setText(self.strFormatter.format(linacModel.i_Coil_BMag))
+        # self.lineEdit_i_Pos_Rad.setText(self.strFormatter.format(linacModel.i_Pos_Rad))
+        # self.lineEdit_i_Pos_Trans.setText(self.strFormatter.format(linacModel.i_Pos_Trans))
+        # self.lineEdit_i_Ang_Rad.setText(self.strFormatter.format(linacModel.i_Ang_Rad))
+        # self.lineEdit_i_Ang_Trans.setText(self.strFormatter.format(linacModel.i_Ang_Trans))
+        # self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(linacModel.Rad_Jaw))
+        # self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(linacModel.Trans_Jaw))
+        # self.lineEdit_d_Tank.setText(self.strFormatter.format(linacModel.d_Tank))
+        # self.horizontalScrollBar_Omega.valueChanged.disconnect(self.updateLinacModel_Omega)
+        # self.horizontalScrollBar_P_AC_Kly.valueChanged.disconnect(self.updateLinacModel_P_AC_Kly)
+        # self.horizontalScrollBar_v_Kly.valueChanged.disconnect(self.updateLinacModel_v_Kly)
+        # self.horizontalScrollBar_Tau.valueChanged.disconnect(self.updateLinacModel_Tau)
+        # self.horizontalScrollBar_v_Gun.valueChanged.disconnect(self.updateLinacModel_v_Gun)
+        # self.horizontalScrollBar_v_Grid.valueChanged.disconnect(self.updateLinacModel_v_Grid)
+        # self.horizontalScrollBar_i_Coil_BMag.valueChanged.disconnect(self.updateLinacModel_i_Coil_BMag)
+        # self.horizontalScrollBar_i_Pos_Rad.valueChanged.disconnect(self.updateLinacModel_i_Pos_Rad)
+        # self.horizontalScrollBar_i_Pos_Trans.valueChanged.disconnect(self.updateLinacModel_i_Pos_Trans)
+        # self.horizontalScrollBar_i_Ang_Rad.valueChanged.disconnect(self.updateLinacModel_i_Ang_Rad)
+        # self.horizontalScrollBar_i_Ang_Trans.valueChanged.disconnect(self.updateLinacModel_i_Ang_Trans)
+        # self.horizontalScrollBar_Rad_Jaw.valueChanged.disconnect(self.updateLinacModel_Rad_Jaw)
+        # self.horizontalScrollBar_Trans_Jaw.valueChanged.disconnect(self.updateLinacModel_Trans_Jaw)
+        # self.horizontalScrollBar_d_Tank.valueChanged.disconnect(self.updateLinacModel_d_Tank)
+        # model outputs
+        self.lineEdit_i_Acc.setText(self.strFormatter.format(float(linacModel.i_Acc)))
+        self.lineEdit_i_Tar.setText(self.strFormatter.format(linacModel.i_Tar))
+        self.lineEdit_P_Acc.setText(self.strFormatter.format(linacModel.P_Acc))
+        self.lineEdit_P_Kly_Refl.setText(self.strFormatter.format(linacModel.P_Kly_Refl))
         self.lineEdit_S_Ion_R.setText(self.strFormatter.format(linacModel.S_Ion_R))
         self.lineEdit_S_Ion_T.setText(self.strFormatter.format(linacModel.S_Ion_T))
         self.lineEdit_Flatness_R.setText(self.strFormatter.format(linacModel.Flatness_R))
         self.lineEdit_Flatness_T.setText(self.strFormatter.format(linacModel.Flatness_T))
         self.lineEdit_dD_Ion.setText(self.strFormatter.format(linacModel.dD_Ion))
-        self.lineEdit_Omega.setText(self.strFormatter.format(linacModel.Omega))
-        self.lineEdit_P_AC_Kly.setText(self.strFormatter.format(linacModel.P_AC_Kly))
-        self.lineEdit_v_Kly.setText(self.strFormatter.format(linacModel.v_Kly))
-        self.lineEdit_Tau.setText(self.strFormatter.format(linacModel.Tau))
-        self.lineEdit_v_Gun.setText(self.strFormatter.format(linacModel.v_Gun))
-        self.lineEdit_v_Grid.setText(self.strFormatter.format(linacModel.v_Grid))
-        self.lineEdit_i_Coil_BMag.setText(self.strFormatter.format(linacModel.i_Coil_BMag))
-        self.lineEdit_i_Pos_Rad.setText(self.strFormatter.format(linacModel.i_Pos_Rad))
-        self.lineEdit_i_Pos_Trans.setText(self.strFormatter.format(linacModel.i_Pos_Trans))
-        self.lineEdit_i_Ang_Rad.setText(self.strFormatter.format(linacModel.i_Ang_Rad))
-        self.lineEdit_i_Ang_Trans.setText(self.strFormatter.format(linacModel.i_Ang_Trans))
-        self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(linacModel.Rad_Jaw))
-        self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(linacModel.Trans_Jaw))
-        self.lineEdit_d_Tank.setText(self.strFormatter.format(linacModel.d_Tank))
-        self.lineEdit_i_Acc.setText(self.strFormatter.format(float(linacModel.i_Acc)))
-        self.lineEdit_i_Tar.setText(self.strFormatter.format(linacModel.i_Tar))
-        self.lineEdit_P_Acc.setText(self.strFormatter.format(linacModel.P_Acc))
-        self.lineEdit_P_Kly_Refl.setText(self.strFormatter.format(linacModel.P_Kly_Refl))
-        self.horizontalScrollBar_Omega.valueChanged.disconnect(self.updateLinacModel_Omega)
-        self.horizontalScrollBar_P_AC_Kly.valueChanged.disconnect(self.updateLinacModel_P_AC_Kly)
-        self.horizontalScrollBar_v_Kly.valueChanged.disconnect(self.updateLinacModel_v_Kly)
-        self.horizontalScrollBar_Tau.valueChanged.disconnect(self.updateLinacModel_Tau)
-        self.horizontalScrollBar_v_Gun.valueChanged.disconnect(self.updateLinacModel_v_Gun)
-        self.horizontalScrollBar_v_Grid.valueChanged.disconnect(self.updateLinacModel_v_Grid)
-        self.horizontalScrollBar_i_Coil_BMag.valueChanged.disconnect(self.updateLinacModel_i_Coil_BMag)
-        self.horizontalScrollBar_i_Pos_Rad.valueChanged.disconnect(self.updateLinacModel_i_Pos_Rad)
-        self.horizontalScrollBar_i_Pos_Trans.valueChanged.disconnect(self.updateLinacModel_i_Pos_Trans)
-        self.horizontalScrollBar_i_Ang_Rad.valueChanged.disconnect(self.updateLinacModel_i_Ang_Rad)
-        self.horizontalScrollBar_i_Ang_Trans.valueChanged.disconnect(self.updateLinacModel_i_Ang_Trans)
-        self.horizontalScrollBar_Rad_Jaw.valueChanged.disconnect(self.updateLinacModel_Rad_Jaw)
-        self.horizontalScrollBar_Trans_Jaw.valueChanged.disconnect(self.updateLinacModel_Trans_Jaw)
-        self.horizontalScrollBar_d_Tank.valueChanged.disconnect(self.updateLinacModel_d_Tank)
         
-        # added int() to fix "TypeError: setValue(self, int): argument 1 has unexpected type 'float'"
+        # (for scroll bars) added int() to fix "TypeError: setValue(self, int): argument 1 has unexpected type 'float'"
+        # for spin boxes int() should be removed
         # changing these to values in linacModel variable above doesn't change anything
         self.horizontalScrollBar_Omega.setValue(int(self.linacSimPyLinacModel.Omega))   # previously included * 100
         self.horizontalScrollBar_P_AC_Kly.setValue(int(self.linacSimPyLinacModel.P_AC_Kly))
@@ -489,20 +505,20 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_Trans_Jaw.setValue(int(self.linacSimPyLinacModel.Trans_Jaw))
         self.horizontalScrollBar_d_Tank.setValue(int(self.linacSimPyLinacModel.d_Tank))
         
-        self.horizontalScrollBar_Omega.valueChanged.connect(self.updateLinacModel_Omega)
-        self.horizontalScrollBar_P_AC_Kly.valueChanged.connect(self.updateLinacModel_P_AC_Kly)
-        self.horizontalScrollBar_v_Kly.valueChanged.connect(self.updateLinacModel_v_Kly)
-        self.horizontalScrollBar_Tau.valueChanged.connect(self.updateLinacModel_Tau)
-        self.horizontalScrollBar_v_Gun.valueChanged.connect(self.updateLinacModel_v_Gun)
-        self.horizontalScrollBar_v_Grid.valueChanged.connect(self.updateLinacModel_v_Grid)
-        self.horizontalScrollBar_i_Coil_BMag.valueChanged.connect(self.updateLinacModel_i_Coil_BMag)
-        self.horizontalScrollBar_i_Pos_Rad.valueChanged.connect(self.updateLinacModel_i_Pos_Rad)
-        self.horizontalScrollBar_i_Pos_Trans.valueChanged.connect(self.updateLinacModel_i_Pos_Trans)
-        self.horizontalScrollBar_i_Ang_Rad.valueChanged.connect(self.updateLinacModel_i_Ang_Rad)
-        self.horizontalScrollBar_i_Ang_Trans.valueChanged.connect(self.updateLinacModel_i_Ang_Trans)
-        self.horizontalScrollBar_Rad_Jaw.valueChanged.connect(self.updateLinacModel_Rad_Jaw)
-        self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
-        self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
+        # self.horizontalScrollBar_Omega.valueChanged.connect(self.updateLinacModel_Omega)
+        # self.horizontalScrollBar_P_AC_Kly.valueChanged.connect(self.updateLinacModel_P_AC_Kly)
+        # self.horizontalScrollBar_v_Kly.valueChanged.connect(self.updateLinacModel_v_Kly)
+        # self.horizontalScrollBar_Tau.valueChanged.connect(self.updateLinacModel_Tau)
+        # self.horizontalScrollBar_v_Gun.valueChanged.connect(self.updateLinacModel_v_Gun)
+        # self.horizontalScrollBar_v_Grid.valueChanged.connect(self.updateLinacModel_v_Grid)
+        # self.horizontalScrollBar_i_Coil_BMag.valueChanged.connect(self.updateLinacModel_i_Coil_BMag)
+        # self.horizontalScrollBar_i_Pos_Rad.valueChanged.connect(self.updateLinacModel_i_Pos_Rad)
+        # self.horizontalScrollBar_i_Pos_Trans.valueChanged.connect(self.updateLinacModel_i_Pos_Trans)
+        # self.horizontalScrollBar_i_Ang_Rad.valueChanged.connect(self.updateLinacModel_i_Ang_Rad)
+        # self.horizontalScrollBar_i_Ang_Trans.valueChanged.connect(self.updateLinacModel_i_Ang_Trans)
+        # self.horizontalScrollBar_Rad_Jaw.valueChanged.connect(self.updateLinacModel_Rad_Jaw)
+        # self.horizontalScrollBar_Trans_Jaw.valueChanged.connect(self.updateLinacModel_Trans_Jaw)
+        # self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
 
     def updateLinacModel_BeamOn(self):
         #print('updateLinacModel_BeamOn\n', flush=True)
@@ -597,12 +613,12 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
     def updateLinacModel_Energy(self):
         #print('updateLinacModel_Energy\n')   # never runs?
         if self.comboBox_Energy.currentIndex() == 0:
-            self.lineEdit_d_Tank.setText('0')
-            self.lineEdit_i_Coil_BMag.setText('0')
-            self.lineEdit_v_Gun.setText('0')
-            self.lineEdit_v_Kly.setText('0')
-            self.lineEdit_v_Grid.setText('0')
-            self.lineEdit_P_AC_Kly.setText('0')
+            # self.lineEdit_d_Tank.setText('0')
+            # self.lineEdit_i_Coil_BMag.setText('0')
+            # self.lineEdit_v_Gun.setText('0')
+            # self.lineEdit_v_Kly.setText('0')
+            # self.lineEdit_v_Grid.setText('0')
+            # self.lineEdit_P_AC_Kly.setText('0')
             self.horizontalScrollBar_d_Tank.setValue(0.0)
             self.horizontalScrollBar_i_Coil_BMag.setValue(0.0)
             self.horizontalScrollBar_v_Gun.setValue(0.0)
@@ -610,12 +626,12 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.horizontalScrollBar_v_Grid.setValue(0.0)
             self.horizontalScrollBar_P_AC_Kly.setValue(0.0)
         elif self.comboBox_Energy.currentIndex() == 1:
-            self.lineEdit_d_Tank.setText('1.5')
-            self.lineEdit_i_Coil_BMag.setText('65.0')
-            self.lineEdit_v_Gun.setText('16.0')
-            self.lineEdit_v_Kly.setText('104.0')
-            self.lineEdit_v_Grid.setText('0.0')
-            self.lineEdit_P_AC_Kly.setText('182.0')
+            # self.lineEdit_d_Tank.setText('1.5')
+            # self.lineEdit_i_Coil_BMag.setText('65.0')
+            # self.lineEdit_v_Gun.setText('16.0')
+            # self.lineEdit_v_Kly.setText('104.0')
+            # self.lineEdit_v_Grid.setText('0.0')
+            # self.lineEdit_P_AC_Kly.setText('182.0')
             self.horizontalScrollBar_d_Tank.setValue(1.5)
             self.horizontalScrollBar_i_Coil_BMag.setValue(65.0)
             self.horizontalScrollBar_v_Gun.setValue(16.0)
@@ -623,12 +639,12 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.horizontalScrollBar_v_Grid.setValue(0.0)
             self.horizontalScrollBar_P_AC_Kly.setValue(182.0)
         elif self.comboBox_Energy.currentIndex() == 2:
-            self.lineEdit_d_Tank.setText('3.0')
-            self.lineEdit_i_Coil_BMag.setText('155.0')
-            self.lineEdit_v_Gun.setText('10.0')
-            self.lineEdit_v_Kly.setText('125.0')
-            self.lineEdit_v_Grid.setText('-10.6')
-            self.lineEdit_P_AC_Kly.setText('67.0')
+            # self.lineEdit_d_Tank.setText('3.0')
+            # self.lineEdit_i_Coil_BMag.setText('155.0')
+            # self.lineEdit_v_Gun.setText('10.0')
+            # self.lineEdit_v_Kly.setText('125.0')
+            # self.lineEdit_v_Grid.setText('-10.6')
+            # self.lineEdit_P_AC_Kly.setText('67.0')
             self.horizontalScrollBar_d_Tank.setValue(3.0)
             self.horizontalScrollBar_i_Coil_BMag.setValue(155.0)
             self.horizontalScrollBar_v_Gun.setValue(10.0)
@@ -709,103 +725,104 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.linacSimPyController.updateLinacModelWithParameters(paramSetting)
         self.parameterLog.append(paramSetting)
 
-    def updateLinacModel_Omega(self):
-        self.lineEdit_Omega.setText(str(self.horizontalScrollBar_Omega.value()))   # previously included / 100.0
+# commented functions below but they are used above
+    # def updateLinacModel_Omega(self):
+    #     self.lineEdit_Omega.setText(str(self.horizontalScrollBar_Omega.value()))   # previously included / 100.0
 
-    def updateLinacModel_P_AC_Kly(self):
-        self.lineEdit_P_AC_Kly.setText(str(self.horizontalScrollBar_P_AC_Kly.value()))
+    # def updateLinacModel_P_AC_Kly(self):
+    #     self.lineEdit_P_AC_Kly.setText(str(self.horizontalScrollBar_P_AC_Kly.value()))
 
-    def updateLinacModel_v_Kly(self):
-        self.lineEdit_v_Kly.setText(str(self.horizontalScrollBar_v_Kly.value()))
+    # def updateLinacModel_v_Kly(self):
+    #     self.lineEdit_v_Kly.setText(str(self.horizontalScrollBar_v_Kly.value()))
 
-    def updateLinacModel_Tau(self):
-        self.lineEdit_Tau.setText(str(self.horizontalScrollBar_Tau.value()))   # previously included / 10.0
+    # def updateLinacModel_Tau(self):
+    #     self.lineEdit_Tau.setText(str(self.horizontalScrollBar_Tau.value()))   # previously included / 10.0
 
-    def updateLinacModel_v_Gun(self):
-        self.lineEdit_v_Gun.setText(str(self.horizontalScrollBar_v_Gun.value()))
+    # def updateLinacModel_v_Gun(self):
+    #     self.lineEdit_v_Gun.setText(str(self.horizontalScrollBar_v_Gun.value()))
 
-    def updateLinacModel_v_Grid(self):
-        self.lineEdit_v_Grid.setText(str(self.horizontalScrollBar_v_Grid.value()))
+    # def updateLinacModel_v_Grid(self):
+    #     self.lineEdit_v_Grid.setText(str(self.horizontalScrollBar_v_Grid.value()))
 
-    def updateLinacModel_i_Coil_BMag(self):
-        self.lineEdit_i_Coil_BMag.setText(str(self.horizontalScrollBar_i_Coil_BMag.value()))
+    # def updateLinacModel_i_Coil_BMag(self):
+    #     self.lineEdit_i_Coil_BMag.setText(str(self.horizontalScrollBar_i_Coil_BMag.value()))
 
-    def updateLinacModel_i_Pos_Rad(self):
-        self.lineEdit_i_Pos_Rad.setText(str(self.horizontalScrollBar_i_Pos_Rad.value()))
+    # def updateLinacModel_i_Pos_Rad(self):
+    #     self.lineEdit_i_Pos_Rad.setText(str(self.horizontalScrollBar_i_Pos_Rad.value()))
 
-    def updateLinacModel_i_Pos_Trans(self):
-        self.lineEdit_i_Pos_Trans.setText(str(self.horizontalScrollBar_i_Pos_Trans.value()))
+    # def updateLinacModel_i_Pos_Trans(self):
+    #     self.lineEdit_i_Pos_Trans.setText(str(self.horizontalScrollBar_i_Pos_Trans.value()))
 
-    def updateLinacModel_i_Ang_Rad(self):
-        self.lineEdit_i_Ang_Rad.setText(str(self.horizontalScrollBar_i_Ang_Rad.value()))
+    # def updateLinacModel_i_Ang_Rad(self):
+    #     self.lineEdit_i_Ang_Rad.setText(str(self.horizontalScrollBar_i_Ang_Rad.value()))
 
-    def updateLinacModel_i_Ang_Trans(self):
-        self.lineEdit_i_Ang_Trans.setText(str(self.horizontalScrollBar_i_Ang_Trans.value()))
+    # def updateLinacModel_i_Ang_Trans(self):
+    #     self.lineEdit_i_Ang_Trans.setText(str(self.horizontalScrollBar_i_Ang_Trans.value()))
 
-    def updateLinacModel_Rad_Jaw(self):
-        self.lineEdit_Rad_Jaw.setText(str(self.horizontalScrollBar_Rad_Jaw.value()))
+    # def updateLinacModel_Rad_Jaw(self):
+    #     self.lineEdit_Rad_Jaw.setText(str(self.horizontalScrollBar_Rad_Jaw.value()))
 
-    def updateLinacModel_Trans_Jaw(self):
-        if self.lineEdit_Trans_Jaw.text() != str(self.horizontalScrollBar_Trans_Jaw.value()):
-            self.lineEdit_Trans_Jaw.setText(str(self.horizontalScrollBar_Trans_Jaw.value()))
+    # def updateLinacModel_Trans_Jaw(self):
+    #     if self.lineEdit_Trans_Jaw.text() != str(self.horizontalScrollBar_Trans_Jaw.value()):
+    #         self.lineEdit_Trans_Jaw.setText(str(self.horizontalScrollBar_Trans_Jaw.value()))
 
-    def updateLinacModel_d_Tank(self):
-        self.lineEdit_d_Tank.setText(str(self.horizontalScrollBar_d_Tank.value()))
+    # def updateLinacModel_d_Tank(self):
+    #     self.lineEdit_d_Tank.setText(str(self.horizontalScrollBar_d_Tank.value()))
 
-    def updateLinacModel_Omega_2(self):
-        value = float(self.lineEdit_Omega.text())
-        if value >= 2855.5 and value <= 2856.5:
-            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
+    # def updateLinacModel_Omega_2(self):
+    #     value = float(self.lineEdit_Omega.text())
+    #     if value >= 2855.5 and value <= 2856.5:
+    #         self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
 
-    def updateLinacModel_Omega_3(self):
-        value = float(self.lineEdit_Omega.text())
-        if value >= 2855.5 and value <= 2856.5:
-            self.updateLinacModel()
-        else:
-            self.lineEdit_Omega.setText(2856.0)
-            self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
+    # def updateLinacModel_Omega_3(self):
+    #     value = float(self.lineEdit_Omega.text())
+    #     if value >= 2855.5 and value <= 2856.5:
+    #         self.updateLinacModel()
+    #     else:
+    #         self.lineEdit_Omega.setText(2856.0)
+    #         self.horizontalScrollBar_Omega.setValue(float(self.lineEdit_Omega.text()))   # previously included * 100
 
-    def updateLinacModel_P_AC_Kly_2(self):
-        self.horizontalScrollBar_P_AC_Kly.setValue(float(self.lineEdit_P_AC_Kly.text()))
+    # def updateLinacModel_P_AC_Kly_2(self):
+    #     self.horizontalScrollBar_P_AC_Kly.setValue(float(self.lineEdit_P_AC_Kly.text()))
 
-    def updateLinacModel_v_Kly_2(self):
-        self.horizontalScrollBar_v_Kly.setValue(float(self.lineEdit_v_Kly.text()))
+    # def updateLinacModel_v_Kly_2(self):
+    #     self.horizontalScrollBar_v_Kly.setValue(float(self.lineEdit_v_Kly.text()))
 
-    def updateLinacModel_Tau_2(self):
-        # looks wrong
-        self.horizontalScrollBar_v_Gun.setValue(float(self.lineEdit_Tau.text()))   # previously included * 10
+    # def updateLinacModel_Tau_2(self):
+    #     # looks wrong
+    #     self.horizontalScrollBar_v_Gun.setValue(float(self.lineEdit_Tau.text()))   # previously included * 10
 
-    def updateLinacModel_v_Gun_2(self):
-        # looks wrong
-        self.horizontalScrollBar_v_Grid.setValue(float(self.lineEdit_v_Gun.text()))
+    # def updateLinacModel_v_Gun_2(self):
+    #     # looks wrong
+    #     self.horizontalScrollBar_v_Grid.setValue(float(self.lineEdit_v_Gun.text()))
 
-    def updateLinacModel_v_Grid_2(self):
-        # looks wrong
-        self.horizontalScrollBar_i_Coil_BMag.setValue(float(self.lineEdit_v_Grid.text()))
+    # def updateLinacModel_v_Grid_2(self):
+    #     # looks wrong
+    #     self.horizontalScrollBar_i_Coil_BMag.setValue(float(self.lineEdit_v_Grid.text()))
 
-    def updateLinacModel_i_Coil_BMag_2(self):
-        self.horizontalScrollBar_i_Coil_BMag.setValue(float(self.lineEdit_i_Coil_BMag.text()))
+    # def updateLinacModel_i_Coil_BMag_2(self):
+    #     self.horizontalScrollBar_i_Coil_BMag.setValue(float(self.lineEdit_i_Coil_BMag.text()))
 
-    def updateLinacModel_i_Pos_Rad_2(self):
-        self.horizontalScrollBar_i_Pos_Rad.setValue(float(self.lineEdit_i_Pos_Rad.text()))
+    # def updateLinacModel_i_Pos_Rad_2(self):
+    #     self.horizontalScrollBar_i_Pos_Rad.setValue(float(self.lineEdit_i_Pos_Rad.text()))
 
-    def updateLinacModel_i_Pos_Trans_2(self):
-        self.horizontalScrollBar_i_Pos_Trans.setValue(float(self.lineEdit_i_Pos_Trans.text()))
+    # def updateLinacModel_i_Pos_Trans_2(self):
+    #     self.horizontalScrollBar_i_Pos_Trans.setValue(float(self.lineEdit_i_Pos_Trans.text()))
 
-    def updateLinacModel_i_Ang_Rad_2(self):
-        self.horizontalScrollBar_i_Ang_Rad.setValue(float(self.lineEdit_i_Ang_Rad.text()))
+    # def updateLinacModel_i_Ang_Rad_2(self):
+    #     self.horizontalScrollBar_i_Ang_Rad.setValue(float(self.lineEdit_i_Ang_Rad.text()))
 
-    def updateLinacModel_i_Ang_Trans_2(self):
-        self.horizontalScrollBar_i_Ang_Trans.setValue(float(self.lineEdit_i_Ang_Trans.text()))
+    # def updateLinacModel_i_Ang_Trans_2(self):
+    #     self.horizontalScrollBar_i_Ang_Trans.setValue(float(self.lineEdit_i_Ang_Trans.text()))
 
-    def updateLinacModel_Rad_Jaw_2(self):
-        self.horizontalScrollBar_Rad_Jaw.setValue(float(self.lineEdit_Rad_Jaw.text()))
+    # def updateLinacModel_Rad_Jaw_2(self):
+    #     self.horizontalScrollBar_Rad_Jaw.setValue(float(self.lineEdit_Rad_Jaw.text()))
 
-    def updateLinacModel_Trans_Jaw_2(self):
-        self.horizontalScrollBar_Trans_Jaw.setValue(float(self.lineEdit_Trans_Jaw.text()))
+    # def updateLinacModel_Trans_Jaw_2(self):
+    #     self.horizontalScrollBar_Trans_Jaw.setValue(float(self.lineEdit_Trans_Jaw.text()))
 
-    def updateLinacModel_d_Tank_2(self):
-        self.horizontalScrollBar_d_Tank.setValue(float(self.lineEdit_d_Tank.text()))
+    # def updateLinacModel_d_Tank_2(self):
+    #     self.horizontalScrollBar_d_Tank.setValue(float(self.lineEdit_d_Tank.text()))
 
 
 def main():
