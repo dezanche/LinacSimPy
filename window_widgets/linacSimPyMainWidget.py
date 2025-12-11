@@ -520,7 +520,7 @@ class Ui_MainWindow(object):
         self.label_8.setSizePolicy(sizePolicy)
         self.label_8.setText(_fromUtf8('tst'))
         # changed image and scaled it properly
-        self.label_8.setPixmap(QtGui.QPixmap(_fromUtf8('resources/images/Linac.png')).scaled(self.label_8.size()*2, 2, QtCore.Qt.SmoothTransformation))
+        self.label_8.setPixmap(QtGui.QPixmap(_fromUtf8('resources/images/Linac_new.jpg')).scaled(self.label_8.size()*2, 2, QtCore.Qt.SmoothTransformation))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName(_fromUtf8('label_8'))
         # added tooltip
