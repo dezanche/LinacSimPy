@@ -49,6 +49,7 @@ class linacSimPyController:
         self.linacSimPyTreatementHeadView = TreatementHeadView
 
     def updateLinacModelWithParameters(self, paramSetting):
+        #print('updateLinacModelWithParameters\n')
         self.linacSimPyLinacModel.PRF = paramSetting.PRF
         self.linacSimPyLinacModel.Omega = paramSetting.Omega
         self.linacSimPyLinacModel.P_AC_Kly = paramSetting.P_AC_Kly
@@ -103,6 +104,7 @@ class linacSimPyController:
         self.updateViews()
 
     def updateLinacModel_PRF(self, index):
+        #print('updateLinacModel_PRF\n')
         if index == 0:
             value = 60
         elif index == 1:
@@ -122,6 +124,7 @@ class linacSimPyController:
         self.updateViews()
 
     def updateLinacModel_Energy(self, energyIndex):
+        #print('updateLinacModel_Energy\n')
         if energyIndex == 0:
             self.linacSimPyLinacModel.d_Tank = 0
             self.linacSimPyLinacModel.i_Coil_BMag = 0

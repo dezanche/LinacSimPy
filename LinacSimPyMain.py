@@ -505,6 +505,8 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         self.horizontalScrollBar_d_Tank.valueChanged.connect(self.updateLinacModel_d_Tank)
 
     def updateLinacModel_BeamOn(self):
+        #print('updateLinacModel_BeamOn\n', flush=True)
+        #sys.stdout.flush()
         if self.pushButton_BeamOn.isChecked():
             self.comboBox_PRF.setEnabled(True)
             self.comboBox_Energy.setEnabled(True)
@@ -587,10 +589,13 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         #self.comboBox_PRF.setCurrentIndex(0)
         #self.updateLinacModel_Energy()
 
-# this should be reading values from a central definition (e.g., file(s)) and also updating the "sliders"
+# this should be reading values from a central definition (e.g., file(s)) instead of using hard coded values
 # just doing a self.updateView() doesn't work
 # self.updateLinacModel() causes a crash
+# added horizontalScrollBar_d_Tank.setValue statements so values in spin boxes are consistent with those in lineEdit boxes
+# works but not in all cases; the lineEdit boxes are the ground truth so it must be getting set somewhere else
     def updateLinacModel_Energy(self):
+        #print('updateLinacModel_Energy\n')   # never runs?
         if self.comboBox_Energy.currentIndex() == 0:
             self.lineEdit_d_Tank.setText('0')
             self.lineEdit_i_Coil_BMag.setText('0')
@@ -598,6 +603,12 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_v_Kly.setText('0')
             self.lineEdit_v_Grid.setText('0')
             self.lineEdit_P_AC_Kly.setText('0')
+            self.horizontalScrollBar_d_Tank.setValue(0.0)
+            self.horizontalScrollBar_i_Coil_BMag.setValue(0.0)
+            self.horizontalScrollBar_v_Gun.setValue(0.0)
+            self.horizontalScrollBar_v_Kly.setValue(0.0)
+            self.horizontalScrollBar_v_Grid.setValue(0.0)
+            self.horizontalScrollBar_P_AC_Kly.setValue(0.0)
         elif self.comboBox_Energy.currentIndex() == 1:
             self.lineEdit_d_Tank.setText('1.5')
             self.lineEdit_i_Coil_BMag.setText('65.0')
@@ -605,7 +616,12 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_v_Kly.setText('104.0')
             self.lineEdit_v_Grid.setText('0.0')
             self.lineEdit_P_AC_Kly.setText('182.0')
-            #self.horizontalScrollBar_P_AC_Kly.setValue(182.0) works but not in all cases; the lineEdit boxes are the ground truth
+            self.horizontalScrollBar_d_Tank.setValue(1.5)
+            self.horizontalScrollBar_i_Coil_BMag.setValue(65.0)
+            self.horizontalScrollBar_v_Gun.setValue(16.0)
+            self.horizontalScrollBar_v_Kly.setValue(104.0)
+            self.horizontalScrollBar_v_Grid.setValue(0.0)
+            self.horizontalScrollBar_P_AC_Kly.setValue(182.0)
         elif self.comboBox_Energy.currentIndex() == 2:
             self.lineEdit_d_Tank.setText('3.0')
             self.lineEdit_i_Coil_BMag.setText('155.0')
@@ -613,8 +629,16 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             self.lineEdit_v_Kly.setText('125.0')
             self.lineEdit_v_Grid.setText('-10.6')
             self.lineEdit_P_AC_Kly.setText('67.0')
+            self.horizontalScrollBar_d_Tank.setValue(3.0)
+            self.horizontalScrollBar_i_Coil_BMag.setValue(155.0)
+            self.horizontalScrollBar_v_Gun.setValue(10.0)
+            self.horizontalScrollBar_v_Kly.setValue(125.0)
+            self.horizontalScrollBar_v_Grid.setValue(-10.6)
+            self.horizontalScrollBar_P_AC_Kly.setValue(67.0)
 
+# called by pressing the 'calculate' button
     def updateLinacModel(self):
+        #print('updateLinacModel\n')  # never runs?
         if self.comboBox_Energy.currentIndex() == 0: # or ~self.pushButton_BeamOn.isChecked() needed but doesn't work
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -639,22 +663,38 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         else:
             value = 0
         paramSetting.PRF = value
-        # these should grab values directly from the scroll bars (spin boxes)
-        paramSetting.Tau = float(self.lineEdit_Tau.text())
-        paramSetting.Omega = float(self.lineEdit_Omega.text())
-        paramSetting.P_AC_Kly = float(self.lineEdit_P_AC_Kly.text())
-        paramSetting.v_Kly = float(self.lineEdit_v_Kly.text())
-        paramSetting.v_Gun = float(self.lineEdit_v_Gun.text())
-        paramSetting.i_Coil_BMag = float(self.lineEdit_i_Coil_BMag.text())
-        paramSetting.v_Grid = float(self.lineEdit_v_Grid.text())
-        paramSetting.i_Pos_Rad = float(self.lineEdit_i_Pos_Rad.text())
-        paramSetting.i_Pos_Trans = float(self.lineEdit_i_Pos_Trans.text())
-        paramSetting.i_Ang_Rad = float(self.lineEdit_i_Ang_Rad.text())
-        paramSetting.i_Ang_Trans = float(self.lineEdit_i_Ang_Trans.text())
-        paramSetting.Rad_Jaw = float(self.lineEdit_Rad_Jaw.text())
-        paramSetting.Trans_Jaw = float(self.lineEdit_Trans_Jaw.text())
-        paramSetting.d_Tank = float(self.lineEdit_d_Tank.text())
-        paramSetting.dD_Ion = float(self.lineEdit_dD_Ion.text())
+        # grab values from the spin boxes instead of text boxes
+        # these *should be* the ground truth values used to calculate the model
+        paramSetting.Tau = self.horizontalScrollBar_Tau.value()
+        paramSetting.Omega = self.horizontalScrollBar_Omega.value()
+        paramSetting.P_AC_Kly = self.horizontalScrollBar_P_AC_Kly.value()
+        paramSetting.v_Kly = self.horizontalScrollBar_v_Kly.value()
+        paramSetting.v_Gun = self.horizontalScrollBar_v_Gun.value()
+        paramSetting.i_Coil_BMag = self.horizontalScrollBar_i_Coil_BMag.value()
+        paramSetting.v_Grid = self.horizontalScrollBar_v_Grid.value()
+        paramSetting.i_Pos_Rad = self.horizontalScrollBar_i_Pos_Rad.value()
+        paramSetting.i_Pos_Trans = self.horizontalScrollBar_i_Pos_Trans.value()
+        paramSetting.i_Ang_Rad = self.horizontalScrollBar_i_Ang_Rad.value()
+        paramSetting.i_Ang_Trans = self.horizontalScrollBar_i_Ang_Trans.value()
+        paramSetting.Rad_Jaw = self.horizontalScrollBar_Rad_Jaw.value()
+        paramSetting.Trans_Jaw = self.horizontalScrollBar_Trans_Jaw.value()
+        paramSetting.d_Tank = self.horizontalScrollBar_d_Tank.value()
+        #paramSetting.dD_Ion = self..value() shouldn't be needed
+        # paramSetting.Tau = float(self.lineEdit_Tau.text())
+        # paramSetting.Omega = float(self.lineEdit_Omega.text())
+        # paramSetting.P_AC_Kly = float(self.lineEdit_P_AC_Kly.text())
+        # paramSetting.v_Kly = float(self.lineEdit_v_Kly.text())
+        # paramSetting.v_Gun = float(self.lineEdit_v_Gun.text())
+        # paramSetting.i_Coil_BMag = float(self.lineEdit_i_Coil_BMag.text())
+        # paramSetting.v_Grid = float(self.lineEdit_v_Grid.text())
+        # paramSetting.i_Pos_Rad = float(self.lineEdit_i_Pos_Rad.text())
+        # paramSetting.i_Pos_Trans = float(self.lineEdit_i_Pos_Trans.text())
+        # paramSetting.i_Ang_Rad = float(self.lineEdit_i_Ang_Rad.text())
+        # paramSetting.i_Ang_Trans = float(self.lineEdit_i_Ang_Trans.text())
+        # paramSetting.Rad_Jaw = float(self.lineEdit_Rad_Jaw.text())
+        # paramSetting.Trans_Jaw = float(self.lineEdit_Trans_Jaw.text())
+        # paramSetting.d_Tank = float(self.lineEdit_d_Tank.text())
+        # paramSetting.dD_Ion = float(self.lineEdit_dD_Ion.text())
         if self.comboBox_Energy.currentIndex() == 0:
             paramSetting.Energy = 0
         elif self.comboBox_Energy.currentIndex() == 1:
