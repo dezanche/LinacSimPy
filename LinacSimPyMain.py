@@ -256,7 +256,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             else:
                 PRFCurrentIndex = 0
             self.comboBox_PRF.setCurrentIndex(PRFCurrentIndex)
-            self.lineEdit_Omega.setText(self.strFormatter.format(initData['Omega']))
+            # self.lineEdit_Omega.setText(self.strFormatter.format(initData['Omega']))
             # self.lineEdit_P_AC_Kly.setText(self.strFormatter.format(initData['P_AC_Kly']))
             # self.lineEdit_v_Kly.setText(self.strFormatter.format(initData['v_Kly']))
             # self.lineEdit_Tau.setText(self.strFormatter.format(initData['Tau']))
@@ -270,8 +270,9 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
             # self.lineEdit_Rad_Jaw.setText(self.strFormatter.format(initData['Rad_Jaw']))
             # self.lineEdit_Trans_Jaw.setText(self.strFormatter.format(initData['Trans_Jaw']))
             # self.lineEdit_d_Tank.setText(self.strFormatter.format(initData['d_Tank']))
-            #self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))  # dose rate is a result, not a setup parameter
+            # self.lineEdit_dD_Ion.setText(self.strFormatter.format(initData['dD_Ion']))  # dose rate is a result, not a setup parameter
             # set loaded values in spin boxes
+            self.horizontalScrollBar_Omega.setValue(initData['Omega'])
             self.horizontalScrollBar_P_AC_Kly.setValue(initData['P_AC_Kly'])
             self.horizontalScrollBar_v_Kly.setValue(initData['v_Kly'])
             self.horizontalScrollBar_Tau.setValue(initData['Tau'])
