@@ -659,7 +659,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
         if self.comboBox_Energy.currentIndex() == 0: # or ~self.pushButton_BeamOn.isChecked() needed but doesn't work
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText('You must set beam ON and pick an energy first!')
+            msg.setText('You must turn Linac ON and select an energy mode first!')
             msg.setWindowTitle('LinacSimPy')
             msg.setStandardButtons(QMessageBox.Ok)
             retval = msg.exec_()
