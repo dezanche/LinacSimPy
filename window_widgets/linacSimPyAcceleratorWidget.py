@@ -100,7 +100,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.frame_TL.sizePolicy().hasHeightForWidth())
         self.frame_TL.setSizePolicy(sizePolicy)
         self.frame_TL.setMinimumSize(QtCore.QSize(0, 0))    # was 390, 270; setting to 600 does make it wider
-        self.frame_TL.setMaximumSize(QtCore.QSize(600, 320))    #450 was 390
+        #self.frame_TL.setMaximumSize(QtCore.QSize(600, 320))    #450 was 390
         self.frame_TL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_TL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_TL.setObjectName(_fromUtf8('frame_TL'))
@@ -525,7 +525,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.frame_BR.sizePolicy().hasHeightForWidth())
         self.frame_BR.setSizePolicy(sizePolicy)
         self.frame_BR.setMinimumSize(QtCore.QSize(0, 0))    # 400 was 0,320 before
-        self.frame_BR.setMaximumSize(QtCore.QSize(600, 320))
+        #self.frame_BR.setMaximumSize(QtCore.QSize(600, 320))
         self.frame_BR.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_BR.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_BR.setObjectName(_fromUtf8('frame_BR'))

@@ -98,7 +98,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.frame_TL.sizePolicy().hasHeightForWidth())
         self.frame_TL.setSizePolicy(sizePolicy)
         self.frame_TL.setMinimumSize(QtCore.QSize(300, 270))
-        self.frame_TL.setMaximumSize(QtCore.QSize(600, 270))    #was 400, 270
+        #self.frame_TL.setMaximumSize(QtCore.QSize(600, 270))    #was 400, 270
         self.frame_TL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_TL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_TL.setObjectName(_fromUtf8('frame_TL'))
