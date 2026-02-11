@@ -42,6 +42,9 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtWidgets.QApplication.translate(context, text, disambig)
 
+# font sizes for the whole window
+standard_text_size = 9
+large_text_size = 14
 
 class Ui_MainWindow(object):
 
@@ -95,22 +98,23 @@ class Ui_MainWindow(object):
         ## beam on frame
         self.frame_BeamOn = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(0) # setting to 1 makes it too wide for some reason
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.frame_BeamOn.sizePolicy().hasHeightForWidth())
         self.frame_BeamOn.setSizePolicy(sizePolicy)
-        self.frame_BeamOn.setMaximumSize(QtCore.QSize(220, 16777215))
+        self.frame_BeamOn.setMinimumSize(QtCore.QSize(0, 0))
+        self.frame_BeamOn.setMaximumSize(QtCore.QSize(500, 16777215))
         self.frame_BeamOn.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_BeamOn.setObjectName(_fromUtf8('frame_BeamOn'))
-        self.gridLayout_7 = QtWidgets.QGridLayout(self.frame_BeamOn)
-        self.gridLayout_7.setObjectName(_fromUtf8('gridLayout_7'))
-        self.gridLayout_2 = QtWidgets.QGridLayout()
+        # self.gridLayout_7 = QtWidgets.QGridLayout(self.frame_BeamOn) # unnecessary nested frames 
+        # self.gridLayout_7.setObjectName(_fromUtf8('gridLayout_7'))
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_BeamOn)
         self.gridLayout_2.setObjectName(_fromUtf8('gridLayout_2'))
         
         
         self.label_7 = QtWidgets.QLabel(self.frame_BeamOn)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_7.setFont(font)
@@ -119,25 +123,34 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 1)
         self.pushButton_BeamOn = QtWidgets.QPushButton(self.frame_BeamOn)
         self.pushButton_BeamOn.setCheckable(True)
+        self.pushButton_BeamOn.setMinimumSize(QtCore.QSize(70, 50))
+        self.pushButton_BeamOn.setMaximumSize(QtCore.QSize(180, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(large_text_size)
+        self.pushButton_BeamOn.setFont(font)
         self.pushButton_BeamOn.setObjectName(_fromUtf8('pushButton_BeamOn'))
         # change button color depending on state 
         self.pushButton_BeamOn.setStyleSheet("QPushButton"
                              "{background-color : green; font-weight: bold}"
                              "QPushButton::checked"
-                             "{background-color : red; border: none;}"
+                             "{background-color : red; border: none;}"# without border statement the buttto is hatched when red
                              ) 
         # new tooltip
         self.pushButton_BeamOn.setToolTip('Ctrl-B')
         self.gridLayout_2.addWidget(self.pushButton_BeamOn, 0, 1, 1, 1)
+        
+        # linac mode text
         self.label_6 = QtWidgets.QLabel(self.frame_BeamOn)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_6.setObjectName(_fromUtf8('label_6'))
         self.gridLayout_2.addWidget(self.label_6, 1, 0, 1, 1)
+        
+        # linac mode pull-down
         self.comboBox_Energy = QtWidgets.QComboBox(self.frame_BeamOn)
         self.comboBox_Energy.setEnabled(False)
         self.comboBox_Energy.setObjectName(_fromUtf8('comboBox_Energy'))
@@ -145,15 +158,19 @@ class Ui_MainWindow(object):
         self.comboBox_Energy.addItem(_fromUtf8(''))
         self.comboBox_Energy.addItem(_fromUtf8(''))
         self.gridLayout_2.addWidget(self.comboBox_Energy, 1, 1, 1, 1)
+        
+        # PRF text
         self.label_5 = QtWidgets.QLabel(self.frame_BeamOn)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_5.setObjectName(_fromUtf8('label_5'))
         self.gridLayout_2.addWidget(self.label_5, 2, 0, 1, 1)
+        
+        # PRF pull-down
         self.comboBox_PRF = QtWidgets.QComboBox(self.frame_BeamOn)
         self.comboBox_PRF.setEnabled(False)
         self.comboBox_PRF.setObjectName(_fromUtf8('comboBox_PRF'))
@@ -167,13 +184,23 @@ class Ui_MainWindow(object):
         
         # "calculate" pushbutton
         self.pushButton_UpdateLinacModel = QtWidgets.QPushButton(self.frame_BeamOn)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.pushButton_UpdateLinacModel.sizePolicy().hasHeightForWidth())
+        self.pushButton_UpdateLinacModel.setSizePolicy(sizePolicy)
+        # self.pushButton_UpdateLinacModel.setMinimumSize(QtCore.QSize(0, 0))
+        # self.pushButton_UpdateLinacModel.setMaximumSize(QtCore.QSize(180, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(large_text_size)
+        self.pushButton_UpdateLinacModel.setFont(font)
         self.pushButton_UpdateLinacModel.setObjectName(_fromUtf8('pushButton_UpdateLinacModel'))
         #added tooltip and bold font
         self.pushButton_UpdateLinacModel.setToolTip('Ctrl-C')
         self.pushButton_UpdateLinacModel.setStyleSheet("font-weight: bold")
         self.gridLayout_2.addWidget(self.pushButton_UpdateLinacModel, 3, 0, 1, 2)
 
-        self.gridLayout_7.addLayout(self.gridLayout_2, 0, 0, 1, 1)
+        # self.gridLayout_7.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.frame_BeamOn, 0, 0, 1, 1)
 
         ## output results summary frame
@@ -195,7 +222,7 @@ class Ui_MainWindow(object):
         # was Width (Tau), now it's the heading
         self.label_16 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(large_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_16.setFont(font)
@@ -211,7 +238,7 @@ class Ui_MainWindow(object):
         # dose rate
         self.label_45 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_45.setFont(font)
@@ -227,7 +254,7 @@ class Ui_MainWindow(object):
         # Klystron output RF power
         self.label_12 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_12.setFont(font)
@@ -243,7 +270,7 @@ class Ui_MainWindow(object):
         # Gun Current
         self.label_21 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_21.setFont(font)
@@ -261,7 +288,7 @@ class Ui_MainWindow(object):
         # Target Current
         self.label_22 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_22.setFont(font)
@@ -277,7 +304,7 @@ class Ui_MainWindow(object):
         # Klystron reflected power
         self.label_P_Kly_Refl = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_P_Kly_Refl.setFont(font)
@@ -293,7 +320,7 @@ class Ui_MainWindow(object):
         # Radial Symmetry
         self.label_S_Ion_R = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_S_Ion_R.setFont(font)
@@ -308,7 +335,7 @@ class Ui_MainWindow(object):
         # Radial Flatness
         self.label_2 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_2.setFont(font)
@@ -323,7 +350,7 @@ class Ui_MainWindow(object):
         # Transverse Symmetry
         self.label_3 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_3.setFont(font)
@@ -338,7 +365,7 @@ class Ui_MainWindow(object):
         # Transverse Flatness
         self.label_4 = QtWidgets.QLabel(self.frame_Parameters)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
@@ -353,7 +380,7 @@ class Ui_MainWindow(object):
         # Gun V
         # self.label_18 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_18.setFont(font)
@@ -364,7 +391,7 @@ class Ui_MainWindow(object):
         # Pos R
         # self.label_17 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_17.setFont(font)
@@ -380,7 +407,7 @@ class Ui_MainWindow(object):
         # RF Freq
         # self.label_9 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_9.setFont(font)
@@ -396,7 +423,7 @@ class Ui_MainWindow(object):
         # Kly V
         # self.label_11 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_11.setFont(font)
@@ -419,7 +446,7 @@ class Ui_MainWindow(object):
         # RF in
         # self.label_10 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_10.setFont(font)
@@ -431,7 +458,7 @@ class Ui_MainWindow(object):
         # Grid V
         # self.label_19 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_19.setFont(font)
@@ -442,7 +469,7 @@ class Ui_MainWindow(object):
         # BMag I
         # self.label_20 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_20.setFont(font)
@@ -453,7 +480,7 @@ class Ui_MainWindow(object):
         # Pos T
         # self.label_23 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_23.setFont(font)
@@ -464,7 +491,7 @@ class Ui_MainWindow(object):
         # Ang R
         # self.label_24 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_24.setFont(font)
@@ -475,7 +502,7 @@ class Ui_MainWindow(object):
         # Ang T
         # self.label_25 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_25.setFont(font)
@@ -486,7 +513,7 @@ class Ui_MainWindow(object):
         # Jaw R
         # self.label_26 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_26.setFont(font)
@@ -497,7 +524,7 @@ class Ui_MainWindow(object):
         # Jaw T
         # self.label_27 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_27.setFont(font)
@@ -508,7 +535,7 @@ class Ui_MainWindow(object):
         # Depth
         # self.label_28 = QtWidgets.QLabel(self.frame_Parameters)
         # font = QtGui.QFont()
-        # font.setPointSize(9)
+        # font.setPointSize(standard_text_size)
         # font.setBold(True)
         # font.setWeight(75)
         # self.label_28.setFont(font)
@@ -614,7 +641,7 @@ class Ui_MainWindow(object):
         # Grid V
         self.label_38 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_38.setFont(font)
@@ -624,7 +651,7 @@ class Ui_MainWindow(object):
         
         self.label_42 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_42.setFont(font)
@@ -634,7 +661,7 @@ class Ui_MainWindow(object):
         
         self.label_43 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_43.setFont(font)
@@ -644,7 +671,7 @@ class Ui_MainWindow(object):
         
         self.label_36 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_36.setFont(font)
@@ -654,7 +681,7 @@ class Ui_MainWindow(object):
         
         self.label_34 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_34.setFont(font)
@@ -664,7 +691,7 @@ class Ui_MainWindow(object):
         
         self.label_39 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_39.setFont(font)
@@ -674,7 +701,7 @@ class Ui_MainWindow(object):
         
         self.label_37 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_37.setFont(font)
@@ -684,7 +711,7 @@ class Ui_MainWindow(object):
         
         self.label_32 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_32.setFont(font)
@@ -701,7 +728,7 @@ class Ui_MainWindow(object):
         
         self.label_35 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_35.setFont(font)
@@ -720,7 +747,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.horizontalScrollBar_Omega, 1, 0, 1, 1)
         self.label_31 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_31.setFont(font)
@@ -729,7 +756,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.label_31, 0, 2, 1, 1)
         self.label_33 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_33.setFont(font)
@@ -738,7 +765,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.label_33, 2, 0, 1, 1)
         self.label_29 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_29.setFont(font)
@@ -747,7 +774,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.label_29, 0, 0, 1, 1)
         self.label_30 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_30.setFont(font)
@@ -756,7 +783,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.label_30, 0, 1, 1, 1)
         self.label_40 = QtWidgets.QLabel(self.frame_Sliders)
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_40.setFont(font)
@@ -875,7 +902,9 @@ class Ui_MainWindow(object):
         self.pushButton_Klystron.setMinimumSize(QtCore.QSize(80, 68))
         self.pushButton_Klystron.setMaximumSize(QtCore.QSize(180, 16777215))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(large_text_size)
+        font.setBold(True)
+        font.setWeight(75)
         self.pushButton_Klystron.setFont(font)
         self.pushButton_Klystron.setObjectName(_fromUtf8('pushButton_Klystron'))
         #new tooltip
@@ -885,7 +914,9 @@ class Ui_MainWindow(object):
         self.pushButton_Accelerator.setMinimumSize(QtCore.QSize(0, 70))
         self.pushButton_Accelerator.setMaximumSize(QtCore.QSize(180, 16777215))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(large_text_size)
+        font.setBold(True)
+        font.setWeight(75)
         self.pushButton_Accelerator.setFont(font)
         self.pushButton_Accelerator.setObjectName(_fromUtf8('pushButton_Accelerator'))
         self.pushButton_Accelerator.setToolTip('Open Accelerator window (Ctrl-A)')
@@ -894,7 +925,9 @@ class Ui_MainWindow(object):
         self.pushButton_TreatmentHead.setMinimumSize(QtCore.QSize(0, 70))
         self.pushButton_TreatmentHead.setMaximumSize(QtCore.QSize(180, 16777215))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(large_text_size)
+        font.setBold(True)
+        font.setWeight(75)
         self.pushButton_TreatmentHead.setFont(font)
         self.pushButton_TreatmentHead.setObjectName(_fromUtf8('pushButton_TreatmentHead'))
         self.pushButton_TreatmentHead.setToolTip('Open Treatment Head window (Ctrl-T)')
@@ -977,7 +1010,7 @@ class Ui_MainWindow(object):
         self.comboBox_Energy.setItemText(0, _translate('MainWindow', 'Idle', None))
         self.comboBox_Energy.setItemText(1, _translate('MainWindow', '6MV', None))
         self.comboBox_Energy.setItemText(2, _translate('MainWindow', '15MV', None))
-        self.label_5.setText(_translate('MainWindow', 'PRF [Hz]', None))
+        self.label_5.setText(_translate('MainWindow', 'Pulse Repetition Frequency [Hz]', None))
         self.comboBox_PRF.setItemText(0, _translate('MainWindow', '60Hz', None))
         self.comboBox_PRF.setItemText(1, _translate('MainWindow', '120Hz', None))
         self.comboBox_PRF.setItemText(2, _translate('MainWindow', '180Hz', None))
@@ -1000,16 +1033,16 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate('MainWindow', 'Results Summary', None))
         # self.lineEdit_P_Kly_Refl.setText(_translate('MainWindow', '0', None))
         # self.lineEdit_Tau.setText(_translate('MainWindow', '3', None))
-        # self.label_9.setText(_translate('MainWindow', 'RF Freq [MHz]', None))
-        # self.label_11.setText(_translate('MainWindow', 'Kly V [kV]', None))
+        # self.label_9.setText(_translate('MainWindow', 'Microwave Frequency [MHz]', None))
+        # self.label_11.setText(_translate('MainWindow', 'Klystron Voltage [kV]', None))
         # self.lineEdit_P_AC_Kly.setText(_translate('MainWindow', '0', None))
         # self.lineEdit_v_Kly.setText(_translate('MainWindow', '0', None))
         self.label_P_Kly_Refl.setText(_translate('MainWindow', 'Accelerator Reflected Power [MW]', None))
-        # self.label_10.setText(_translate('MainWindow', 'RF in [W]', None))
+        # self.label_10.setText(_translate('MainWindow', 'Microwave Input Power [W]', None))
         self.label_12.setText(_translate('MainWindow', 'Klystron Output Power [MW]', None))
         # self.lineEdit_P_Acc.setText(_translate('MainWindow', '0', None))
-        # self.label_19.setText(_translate('MainWindow', 'Grid V [V]', None))
-        # self.label_20.setText(_translate('MainWindow', 'BMag I [A]', None))
+        # self.label_19.setText(_translate('MainWindow', 'Grid Voltage [V]', None))
+        # self.label_20.setText(_translate('MainWindow', 'Bending Magnet Current [A]', None))
         self.label_21.setText(_translate('MainWindow', 'Gun Current [mA]', None))
         self.label_22.setText(_translate('MainWindow', 'Target Current [mA]', None))
         # self.label_23.setText(_translate('MainWindow', 'Pos T [mA]', None))
@@ -1030,24 +1063,24 @@ class Ui_MainWindow(object):
         # self.lineEdit_Trans_Jaw.setText(_translate('MainWindow', '15', None))
         # self.lineEdit_d_Tank.setText(_translate('MainWindow', '0', None))
         # input spin box labels
-        self.label_38.setText(_translate('MainWindow', 'Grid V [V]', None))
-        self.label_42.setText(_translate('MainWindow', 'BMag I [A]', None))
-        self.label_43.setText(_translate('MainWindow', 'Ang T [mA]', None))
-        self.label_36.setText(_translate('MainWindow', 'Jaw T [cm]', None))
-        self.label_34.setText(_translate('MainWindow', 'Gun V [kV]', None))
-        self.label_39.setText(_translate('MainWindow', 'Ang R [mA]', None))
-        self.label_37.setText(_translate('MainWindow', 'Kly V [kV]', None))
-        self.label_32.setText(_translate('MainWindow', 'Jaw R [cm]', None))
-        self.label_35.setText(_translate('MainWindow', 'Pos T [mA]', None))
-        self.label_31.setText(_translate('MainWindow', 'Pos R [mA]', None))
-        self.label_33.setText(_translate('MainWindow', 'RF In [W]', None))
-        self.label_29.setText(_translate('MainWindow', 'RF Freq [MHz]', None))
-        self.label_30.setText(_translate('MainWindow', 'Width [us]', None))
-        self.label_40.setText(_translate('MainWindow', 'Depth [cm]', None))
-        self.pushButton_UpdateLinacModel.setText(_translate('MainWindow', 'Calculate Beam', None))
-        self.pushButton_Klystron.setText(_translate('MainWindow', 'Klystron', None))
-        self.pushButton_Accelerator.setText(_translate('MainWindow', 'Accelerator', None))
-        self.pushButton_TreatmentHead.setText(_translate('MainWindow', 'Treatment Head', None))
+        self.label_38.setText(_translate('MainWindow', 'Grid Voltage [V]', None))
+        self.label_42.setText(_translate('MainWindow', 'Bending Magnet Current [A]', None))
+        self.label_43.setText(_translate('MainWindow', 'Transverse Angle Coil Current [mA]', None))
+        self.label_36.setText(_translate('MainWindow', 'Transverse Jaw Position [cm]', None))
+        self.label_34.setText(_translate('MainWindow', 'Gun Voltage [kV]', None))
+        self.label_39.setText(_translate('MainWindow', 'Radial Angle Coil Current [mA]', None))
+        self.label_37.setText(_translate('MainWindow', 'Klystron Voltage [kV]', None))
+        self.label_32.setText(_translate('MainWindow', 'Radial Jaw Position [cm]', None))
+        self.label_35.setText(_translate('MainWindow', 'Transverse Position Coil Current [mA]', None))
+        self.label_31.setText(_translate('MainWindow', 'Radial Position Coil Current [mA]', None))
+        self.label_33.setText(_translate('MainWindow', 'Microwave Input Power [W]', None))
+        self.label_29.setText(_translate('MainWindow', 'Microwave Frequency [MHz]', None))
+        self.label_30.setText(_translate('MainWindow', 'Pulse Width [\u00B5s]', None))
+        self.label_40.setText(_translate('MainWindow', 'Dose Measurement Depth [cm]', None))
+        self.pushButton_UpdateLinacModel.setText(_translate('MainWindow', 'Calculate\nBeam', None))
+        self.pushButton_Klystron.setText(_translate('MainWindow', 'Klystron\nWindow', None))
+        self.pushButton_Accelerator.setText(_translate('MainWindow', 'Accelerator\nWindow', None))
+        self.pushButton_TreatmentHead.setText(_translate('MainWindow', 'Treatment Head\nWindow', None))
         self.menuHelp.setTitle(_translate('MainWindow', 'Help', None))
         self.menuFile.setTitle(_translate('MainWindow', 'File', None))
         self.actionAbout_LinacSimPy.setText(_translate('MainWindow', 'About LinacSimPy', None))

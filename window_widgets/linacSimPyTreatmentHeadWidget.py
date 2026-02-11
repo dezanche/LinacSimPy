@@ -43,6 +43,9 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtWidgets.QApplication.translate(context, text, disambig)
 
+# font sizes for the whole window
+standard_text_size = 9
+large_text_size = 14
 
 class Ui_Form(object):
 
@@ -92,13 +95,13 @@ class Ui_Form(object):
         
         # top left frame
         self.frame_TL = QtWidgets.QFrame(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_TL.sizePolicy().hasHeightForWidth())
-        self.frame_TL.setSizePolicy(sizePolicy)
-        self.frame_TL.setMinimumSize(QtCore.QSize(300, 270))
-        #self.frame_TL.setMaximumSize(QtCore.QSize(600, 270))    #was 400, 270
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        # sizePolicy.setHorizontalStretch(1)
+        # sizePolicy.setVerticalStretch(1)
+        # sizePolicy.setHeightForWidth(self.frame_TL.sizePolicy().hasHeightForWidth())
+        # self.frame_TL.setSizePolicy(sizePolicy)
+        # self.frame_TL.setMinimumSize(QtCore.QSize(300, 270))
+        # self.frame_TL.setMaximumSize(QtCore.QSize(600, 270))    #was 400, 270
         self.frame_TL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_TL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_TL.setObjectName(_fromUtf8('frame_TL'))
@@ -122,14 +125,33 @@ class Ui_Form(object):
         self.frame_6.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName(_fromUtf8('frame_6'))
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_6)
-        self.gridLayout_4.setContentsMargins(0,0,0,0)
-        self.gridLayout_4.setObjectName(_fromUtf8('gridLayout_4'))
-        self.gridLayout_2 = QtWidgets.QGridLayout()
+        # self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_6)
+        # self.gridLayout_4.setContentsMargins(0,0,0,0)
+        # self.gridLayout_4.setObjectName(_fromUtf8('gridLayout_4'))
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_6)
         self.gridLayout_2.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.gridLayout_2.setObjectName(_fromUtf8('gridLayout_2'))
         
-        # Bending magnet text
+        # Title text
+        self.label_2 = QtWidgets.QLabel(self.frame_6)
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        # self.label_2.setSizePolicy(sizePolicy)
+        # self.label_2.setMinimumSize(QtCore.QSize(0, 0))
+        # self.label_2.setMaximumSize(QtCore.QSize(200, 16777215))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8('Helvetica'))
+        font.setPointSize(large_text_size)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName(_fromUtf8('label_2'))
+        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 4)   # was 1, 0
+        
+        # Bending magnet energy text
         self.label_3 = QtWidgets.QLabel(self.frame_6)
         # commented out to allow full width
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -140,7 +162,7 @@ class Ui_Form(object):
         # self.label_3.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_3.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_3.setFont(font)
@@ -148,7 +170,20 @@ class Ui_Form(object):
         self.label_3.setObjectName(_fromUtf8('label_3'))
         self.gridLayout_2.addWidget(self.label_3, 2, 0, 1, 1)
         
-        # Targe current text
+        # Bending magnet energy number
+        self.lineEdit_T_Av_Tar = QtWidgets.QLineEdit(self.frame_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit_T_Av_Tar.sizePolicy().hasHeightForWidth())
+        self.lineEdit_T_Av_Tar.setSizePolicy(sizePolicy)
+        self.lineEdit_T_Av_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
+        #self.lineEdit_T_Av_Tar.setMinimumSize(QtCore.QSize(10, 0))
+        #self.lineEdit_T_Av_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.lineEdit_T_Av_Tar.setObjectName(_fromUtf8('lineEdit_T_Av_Tar'))
+        self.gridLayout_2.addWidget(self.lineEdit_T_Av_Tar, 2, 1, 1, 1)
+        
+        # Target current text
         self.label_4 = QtWidgets.QLabel(self.frame_6)
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         # sizePolicy.setHorizontalStretch(0)
@@ -158,7 +193,7 @@ class Ui_Form(object):
         # self.label_4.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_4.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
@@ -166,18 +201,51 @@ class Ui_Form(object):
         self.label_4.setObjectName(_fromUtf8('label_4'))
         self.gridLayout_2.addWidget(self.label_4, 3, 0, 1, 1)
         
-        # In-plane beam edge number
-        self.lineEdit_L_Pos_Rad = QtWidgets.QLineEdit(self.frame_6)
+        # Target current number
+        self.lineEdit_i_Tar = QtWidgets.QLineEdit(self.frame_6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_L_Pos_Rad.sizePolicy().hasHeightForWidth())
-        self.lineEdit_L_Pos_Rad.setSizePolicy(sizePolicy)
-        self.lineEdit_L_Pos_Rad.setFixedSize(edit_box_width, 20)    #added to make narrower
-        #self.lineEdit_L_Pos_Rad.setMinimumSize(QtCore.QSize(10, 0))
-        #self.lineEdit_L_Pos_Rad.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.lineEdit_L_Pos_Rad.setObjectName(_fromUtf8('lineEdit_L_Pos_Rad'))
-        self.gridLayout_2.addWidget(self.lineEdit_L_Pos_Rad, 5, 1, 1, 1)
+        sizePolicy.setHeightForWidth(self.lineEdit_i_Tar.sizePolicy().hasHeightForWidth())
+        self.lineEdit_i_Tar.setSizePolicy(sizePolicy)
+        self.lineEdit_i_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
+        #self.lineEdit_i_Tar.setMinimumSize(QtCore.QSize(10, 0))
+        #self.lineEdit_i_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.lineEdit_i_Tar.setObjectName(_fromUtf8('lineEdit_i_Tar'))
+        self.gridLayout_2.addWidget(self.lineEdit_i_Tar, 3, 1, 1, 1)
+        
+        # Target efficiency text
+        self.label_11 = QtWidgets.QLabel(self.frame_6)
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        # self.label_11.setSizePolicy(sizePolicy)
+        # self.label_11.setMinimumSize(QtCore.QSize(10, 0))
+        # self.label_11.setMaximumSize(QtCore.QSize(120, 20))
+        font = QtGui.QFont()
+        font.setPointSize(standard_text_size)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.label_11.setObjectName(_fromUtf8('label_11'))
+        self.gridLayout_2.addWidget(self.label_11, 4, 0, 1, 1)
+        
+        # Target efficiency number
+        self.lineEdit_Eff_Tar = QtWidgets.QLineEdit(self.frame_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit_Eff_Tar.sizePolicy().hasHeightForWidth())
+        self.lineEdit_Eff_Tar.setSizePolicy(sizePolicy)
+        self.lineEdit_Eff_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
+        #self.lineEdit_Eff_Tar.setMinimumSize(QtCore.QSize(10, 0))
+        #self.lineEdit_Eff_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.lineEdit_Eff_Tar.setObjectName(_fromUtf8('lineEdit_Eff_Tar'))
+        self.gridLayout_2.addWidget(self.lineEdit_Eff_Tar, 4, 1, 1, 1)
+        
+        # radial jaw number
         self.lineEdit_Rad_Jaw = QtWidgets.QLineEdit(self.frame_6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -190,7 +258,7 @@ class Ui_Form(object):
         self.lineEdit_Rad_Jaw.setObjectName(_fromUtf8('lineEdit_Rad_Jaw'))
         self.gridLayout_2.addWidget(self.lineEdit_Rad_Jaw, 2, 3, 1, 1)
         
-        # Radial S text
+        # Radial symmetry text
         self.label_12 = QtWidgets.QLabel(self.frame_6)
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         # sizePolicy.setHorizontalStretch(0)
@@ -200,7 +268,7 @@ class Ui_Form(object):
         # self.label_12.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_12.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_12.setFont(font)
@@ -231,15 +299,46 @@ class Ui_Form(object):
         # self.label_13.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_13.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_13.setFont(font)
         self.label_13.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_13.setObjectName(_fromUtf8('label_13'))
-        self.gridLayout_2.addWidget(self.label_13, 5, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_13, 2, 4, 1, 1)
+        
+        # In-plane beam edge number
+        self.lineEdit_L_Pos_Rad = QtWidgets.QLineEdit(self.frame_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit_L_Pos_Rad.sizePolicy().hasHeightForWidth())
+        self.lineEdit_L_Pos_Rad.setSizePolicy(sizePolicy)
+        self.lineEdit_L_Pos_Rad.setFixedSize(edit_box_width, 20)    #added to make narrower
+        #self.lineEdit_L_Pos_Rad.setMinimumSize(QtCore.QSize(10, 0))
+        #self.lineEdit_L_Pos_Rad.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.lineEdit_L_Pos_Rad.setObjectName(_fromUtf8('lineEdit_L_Pos_Rad'))
+        self.gridLayout_2.addWidget(self.lineEdit_L_Pos_Rad, 2, 5, 1, 1)   
         
         # Tank measurement depth text
+        self.label_10 = QtWidgets.QLabel(self.frame_6)
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.label_10.sizePolicy().hasHeightForWidth())
+        # self.label_10.setSizePolicy(sizePolicy)
+        # self.label_10.setMinimumSize(QtCore.QSize(10, 0))
+        # self.label_10.setMaximumSize(QtCore.QSize(120, 20))
+        font = QtGui.QFont()
+        font.setPointSize(standard_text_size)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.label_10.setObjectName(_fromUtf8('label_10'))
+        self.gridLayout_2.addWidget(self.label_10, 5, 0, 1, 1)
+        
+        # Tank measurement depth number
         self.lineEdit_d_Tank = QtWidgets.QLineEdit(self.frame_6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -250,39 +349,7 @@ class Ui_Form(object):
         #self.lineEdit_d_Tank.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_d_Tank.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_d_Tank.setObjectName(_fromUtf8('lineEdit_d_Tank'))
-        self.gridLayout_2.addWidget(self.lineEdit_d_Tank, 10, 1, 1, 1)
-        
-        # Title text
-        self.label_2 = QtWidgets.QLabel(self.frame_6)
-        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        # sizePolicy.setHorizontalStretch(0)
-        # sizePolicy.setVerticalStretch(0)
-        # sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        # self.label_2.setSizePolicy(sizePolicy)
-        # self.label_2.setMinimumSize(QtCore.QSize(0, 0))
-        # self.label_2.setMaximumSize(QtCore.QSize(200, 16777215))
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8('Helvetica'))
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName(_fromUtf8('label_2'))
-        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 2)   # was 1, 0
-        
-        # Bending magnet energy number
-        self.lineEdit_T_Av_Tar = QtWidgets.QLineEdit(self.frame_6)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_T_Av_Tar.sizePolicy().hasHeightForWidth())
-        self.lineEdit_T_Av_Tar.setSizePolicy(sizePolicy)
-        self.lineEdit_T_Av_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
-        #self.lineEdit_T_Av_Tar.setMinimumSize(QtCore.QSize(10, 0))
-        #self.lineEdit_T_Av_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.lineEdit_T_Av_Tar.setObjectName(_fromUtf8('lineEdit_T_Av_Tar'))
-        self.gridLayout_2.addWidget(self.lineEdit_T_Av_Tar, 2, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_d_Tank, 5, 1, 1, 1)
         
         # Radial jaw position text
         self.label_5 = QtWidgets.QLabel(self.frame_6)
@@ -294,26 +361,13 @@ class Ui_Form(object):
         # self.label_5.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_5.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_5.setObjectName(_fromUtf8('label_5'))
         self.gridLayout_2.addWidget(self.label_5, 2, 2, 1, 1)
-        
-        # Target current text
-        self.lineEdit_i_Tar = QtWidgets.QLineEdit(self.frame_6)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_i_Tar.sizePolicy().hasHeightForWidth())
-        self.lineEdit_i_Tar.setSizePolicy(sizePolicy)
-        self.lineEdit_i_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
-        #self.lineEdit_i_Tar.setMinimumSize(QtCore.QSize(10, 0))
-        #self.lineEdit_i_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.lineEdit_i_Tar.setObjectName(_fromUtf8('lineEdit_i_Tar'))
-        self.gridLayout_2.addWidget(self.lineEdit_i_Tar, 3, 1, 1, 1)
         
         # Transverse jaw position text
         self.label_6 = QtWidgets.QLabel(self.frame_6)
@@ -325,7 +379,7 @@ class Ui_Form(object):
         # self.label_6.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_6.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_6.setFont(font)
@@ -346,37 +400,6 @@ class Ui_Form(object):
         self.lineEdit_Trans_Jaw.setObjectName(_fromUtf8('lineEdit_Trans_Jaw'))
         self.gridLayout_2.addWidget(self.lineEdit_Trans_Jaw, 3, 3, 1, 1)
         
-        # Target efficiency text
-        self.label_11 = QtWidgets.QLabel(self.frame_6)
-        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        # sizePolicy.setHorizontalStretch(0)
-        # sizePolicy.setVerticalStretch(0)
-        # sizePolicy.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
-        # self.label_11.setSizePolicy(sizePolicy)
-        # self.label_11.setMinimumSize(QtCore.QSize(10, 0))
-        # self.label_11.setMaximumSize(QtCore.QSize(120, 20))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_11.setFont(font)
-        self.label_11.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.label_11.setObjectName(_fromUtf8('label_11'))
-        self.gridLayout_2.addWidget(self.label_11, 4, 0, 1, 1)
-        
-        # Target efficiency number
-        self.lineEdit_Eff_Tar = QtWidgets.QLineEdit(self.frame_6)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_Eff_Tar.sizePolicy().hasHeightForWidth())
-        self.lineEdit_Eff_Tar.setSizePolicy(sizePolicy)
-        self.lineEdit_Eff_Tar.setFixedSize(edit_box_width, 20)    #added to make narrower
-        #self.lineEdit_Eff_Tar.setMinimumSize(QtCore.QSize(10, 0))
-        #self.lineEdit_Eff_Tar.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.lineEdit_Eff_Tar.setObjectName(_fromUtf8('lineEdit_Eff_Tar'))
-        self.gridLayout_2.addWidget(self.lineEdit_Eff_Tar, 4, 1, 1, 1)
-        
         # Transverse symmetry text
         self.label_17 = QtWidgets.QLabel(self.frame_6)
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -387,7 +410,7 @@ class Ui_Form(object):
         # self.label_17.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_17.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_17.setFont(font)
@@ -418,13 +441,13 @@ class Ui_Form(object):
         # self.label_7.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_7.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_7.setFont(font)
         self.label_7.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_7.setObjectName(_fromUtf8('label_7'))
-        self.gridLayout_2.addWidget(self.label_7, 6, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_7, 3, 4, 1, 1)
         
         # In-plane beam edge number
         self.lineEdit_R_Pos_Rad = QtWidgets.QLineEdit(self.frame_6)
@@ -437,7 +460,7 @@ class Ui_Form(object):
         #self.lineEdit_R_Pos_Rad.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_R_Pos_Rad.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_R_Pos_Rad.setObjectName(_fromUtf8('lineEdit_R_Pos_Rad'))
-        self.gridLayout_2.addWidget(self.lineEdit_R_Pos_Rad, 6, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_R_Pos_Rad, 3, 5, 1, 1)
         
         # Radial flatness text
         self.label_18 = QtWidgets.QLabel(self.frame_6)
@@ -449,7 +472,7 @@ class Ui_Form(object):
         # self.label_18.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_18.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_18.setFont(font)
@@ -480,13 +503,13 @@ class Ui_Form(object):
         # self.label_8.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_8.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_8.setFont(font)
         self.label_8.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_8.setObjectName(_fromUtf8('label_8'))
-        self.gridLayout_2.addWidget(self.label_8, 7, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_8, 4, 4, 1, 1)
         
         # Left cross-plane beam edge number
         self.lineEdit_L_Pos_Trans = QtWidgets.QLineEdit(self.frame_6)
@@ -499,7 +522,7 @@ class Ui_Form(object):
         #self.lineEdit_L_Pos_Trans.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_L_Pos_Trans.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_L_Pos_Trans.setObjectName(_fromUtf8('lineEdit_L_Pos_Trans'))
-        self.gridLayout_2.addWidget(self.lineEdit_L_Pos_Trans, 7, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_L_Pos_Trans, 4, 5, 1, 1)
         
         # Transverse flatness text
         self.label_19 = QtWidgets.QLabel(self.frame_6)
@@ -511,13 +534,13 @@ class Ui_Form(object):
         # self.label_19.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_19.setMaximumSize(QtCore.QSize(80, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_19.setFont(font)
         self.label_19.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_19.setObjectName(_fromUtf8('label_19'))
-        self.gridLayout_2.addWidget(self.label_19, 7, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.label_19, 6, 4, 1, 1)
         
         # Transverse flatness number
         self.lineEdit_Flatness_T = QtWidgets.QLineEdit(self.frame_6)
@@ -530,7 +553,7 @@ class Ui_Form(object):
         #self.lineEdit_Flatness_T.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_Flatness_T.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_Flatness_T.setObjectName(_fromUtf8('lineEdit_Flatness_T'))
-        self.gridLayout_2.addWidget(self.lineEdit_Flatness_T, 7, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_Flatness_T, 6, 5, 1, 1)
         
         # Right cross-plane beam edge text
         self.label_9 = QtWidgets.QLabel(self.frame_6)
@@ -542,13 +565,13 @@ class Ui_Form(object):
         # self.label_9.setMinimumSize(QtCore.QSize(10, 0))
         # self.label_9.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_9.setFont(font)
         self.label_9.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_9.setObjectName(_fromUtf8('label_9'))
-        self.gridLayout_2.addWidget(self.label_9, 9, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_9, 5, 4, 1, 1)
         
         # Right cross-plane beam edge number
         self.lineEdit_R_Pos_Trans = QtWidgets.QLineEdit(self.frame_6)
@@ -561,7 +584,7 @@ class Ui_Form(object):
         #self.lineEdit_R_Pos_Trans.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_R_Pos_Trans.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_R_Pos_Trans.setObjectName(_fromUtf8('lineEdit_R_Pos_Trans'))
-        self.gridLayout_2.addWidget(self.lineEdit_R_Pos_Trans, 9, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_R_Pos_Trans, 5, 5, 1, 1)
         
         # Dose rate text
         self.label_20 = QtWidgets.QLabel(self.frame_6)
@@ -573,14 +596,14 @@ class Ui_Form(object):
         # self.label_20.setMinimumSize(QtCore.QSize(100, 0))
         # self.label_20.setMaximumSize(QtCore.QSize(80, 40))
         font = QtGui.QFont()
-        font.setPointSize(9)
+        font.setPointSize(standard_text_size)
         font.setBold(True)
         font.setWeight(75)
         self.label_20.setFont(font)
         self.label_20.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_20.setWordWrap(False)
         self.label_20.setObjectName(_fromUtf8('label_20'))
-        self.gridLayout_2.addWidget(self.label_20, 9, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.label_20, 6, 0, 1, 1)
         
         #Dose rate number
         self.lineEdit_dD_Ion = QtWidgets.QLineEdit(self.frame_6)
@@ -593,27 +616,9 @@ class Ui_Form(object):
         #self.lineEdit_dD_Ion.setMinimumSize(QtCore.QSize(10, 0))
         #self.lineEdit_dD_Ion.setMaximumSize(QtCore.QSize(80, 16777215))
         self.lineEdit_dD_Ion.setObjectName(_fromUtf8('lineEdit_dD_Ion'))
-        self.gridLayout_2.addWidget(self.lineEdit_dD_Ion, 9, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_dD_Ion, 6, 1, 1, 1)
         
-        # Tank measurement depth text
-        self.label_10 = QtWidgets.QLabel(self.frame_6)
-        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        # sizePolicy.setHorizontalStretch(0)
-        # sizePolicy.setVerticalStretch(0)
-        # sizePolicy.setHeightForWidth(self.label_10.sizePolicy().hasHeightForWidth())
-        # self.label_10.setSizePolicy(sizePolicy)
-        # self.label_10.setMinimumSize(QtCore.QSize(10, 0))
-        # self.label_10.setMaximumSize(QtCore.QSize(120, 20))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_10.setFont(font)
-        self.label_10.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.label_10.setObjectName(_fromUtf8('label_10'))
-        self.gridLayout_2.addWidget(self.label_10, 10, 0, 1, 1)
-        
-        self.gridLayout_4.addLayout(self.gridLayout_2, 0, 0, 1, 1)
+        # self.gridLayout_4.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout_5.addWidget(self.frame_6, 0, 0, 1, 1)
         #self.verticalLayout_2.addLayout(self.gridLayout_5)
         
@@ -623,12 +628,12 @@ class Ui_Form(object):
         
         # top right frame
         self.frame_TR = QtWidgets.QFrame(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_TR.sizePolicy().hasHeightForWidth())
-        self.frame_TR.setSizePolicy(sizePolicy)
-        self.frame_TR.setMaximumSize(QtCore.QSize(200, 270))    # was 400, 270
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.frame_TR.sizePolicy().hasHeightForWidth())
+        # self.frame_TR.setSizePolicy(sizePolicy)
+        # self.frame_TR.setMaximumSize(QtCore.QSize(200, 270))    # was 400, 270
         self.frame_TR.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_TR.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_TR.setObjectName(_fromUtf8('frame_TR'))
@@ -644,7 +649,7 @@ class Ui_Form(object):
         #self.label.setPixmap(QtGui.QPixmap(_fromUtf8('resources/images/Medical_Linac_Treatment_Head.svg')))
         #self.label.setScaledContents(True)
         # replaced above lines with following to maintain aspect ratio
-        pixmap = QtGui.QPixmap(_fromUtf8('resources/images/Medical_Linac_Treatment_Head.svg')).scaled(200, 270, QtCore.Qt.KeepAspectRatio)
+        pixmap = QtGui.QPixmap(_fromUtf8('resources/images/Medical_Linac_Treatment_Head.svg')).scaled(300, 600, QtCore.Qt.KeepAspectRatio)
         # self.label.size() in scaled size above gives very small image
         self.label.setPixmap(pixmap)
         
@@ -653,7 +658,7 @@ class Ui_Form(object):
         self.label.setToolTip('https://upload.wikimedia.org/wikipedia/commons/e/e3/Medical_Linac.svg')
         self.gridLayout_8.addWidget(self.label, 0, 0, 1, 1)
         #self.gridLayout.addWidget(self.frame_TR, 0, 1, 1, 1)
-        self.topRow.addWidget(self.frame_TR)
+        self.bottomRow.addWidget(self.frame_TR) #topRow
         
         # bottom right frame
         self.frame_BR = QtWidgets.QFrame(Form)
@@ -716,7 +721,7 @@ class Ui_Form(object):
         self.lineEdit_Rad_Jaw.setText(_translate('Form', '0', None))
         self.label_12.setText(_translate('Form', 'Radial Symmetry [%]', None))
         self.lineEdit_S_Ion_R.setText(_translate('Form', '0', None))
-        self.label_13.setText(_translate('Form', 'Beam Edge IP (target) [cm]', None))
+        self.label_13.setText(_translate('Form', 'Beam Edge In-Plane (target) [cm]', None))
         self.lineEdit_d_Tank.setText(_translate('Form', '0', None))
         # call this Output parameters? Results?
         self.label_2.setText(_translate('Form', 'Treatment Head and Beam Parameters', None))
@@ -729,18 +734,18 @@ class Ui_Form(object):
         self.lineEdit_Eff_Tar.setText(_translate('Form', '0', None))
         self.label_17.setText(_translate('Form', 'Transverse Symmetry [%]', None))
         self.lineEdit_S_Ion_T.setText(_translate('Form', '0', None))
-        self.label_7.setText(_translate('Form', 'Beam Edge IP (gun) [cm]', None))
+        self.label_7.setText(_translate('Form', 'Beam Edge In-Plane (gun) [cm]', None))
         self.lineEdit_R_Pos_Rad.setText(_translate('Form', '0', None))
         self.label_18.setText(_translate('Form', 'Radial Flatness [%]', None))
         self.lineEdit_Flatness_R.setText(_translate('Form', '0', None))
-        self.label_8.setText(_translate('Form', 'Beam Edge XP (left) [cm]', None))
+        self.label_8.setText(_translate('Form', 'Beam Edge Cross-Plane (left) [cm]', None))
         self.lineEdit_L_Pos_Trans.setText(_translate('Form', '0', None))
         self.label_19.setText(_translate('Form', 'Transverse Flatness [%]', None))
         self.lineEdit_Flatness_T.setText(_translate('Form', '0', None))
-        self.label_9.setText(_translate('Form', 'Beam Edge XP (right) [cm]', None))
+        self.label_9.setText(_translate('Form', 'Beam Edge Cross-Plane (right) [cm]', None))
         self.lineEdit_R_Pos_Trans.setText(_translate('Form', '0', None))
         self.label_20.setText(_translate('Form', 'Dose Rate [cGy/Min]', None))
         self.lineEdit_dD_Ion.setText(_translate('Form', '0', None))
-        self.label_10.setText(_translate('Form', 'Measurement Depth [cm]', None))
+        self.label_10.setText(_translate('Form', 'Dose Measurement Depth [cm]', None))
         return
 
