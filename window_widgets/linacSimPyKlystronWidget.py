@@ -731,6 +731,8 @@ class Ui_Form(object):
         self.lineEdit_P_Kly_Refl.setSizePolicy(sizePolicy)
         self.lineEdit_P_Kly_Refl.setObjectName(_fromUtf8('lineEdit_P_Kly_Refl'))
         self.gridLayout_2.addWidget(self.lineEdit_P_Kly_Refl, 3, 1, 1, 1)
+        
+        # other klystron parameters heading
         self.label_2 = QtWidgets.QLabel(self.frame_6)
         self.label_2.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
@@ -740,7 +742,8 @@ class Ui_Form(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setObjectName(_fromUtf8('label_2'))
-        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 2)
+        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 3)
+        
         self.gridLayout_12.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout_5.addWidget(self.frame_6, 1, 0, 1, 1)
         self.gridLayout_7.addLayout(self.gridLayout_5, 0, 0, 1, 1)
