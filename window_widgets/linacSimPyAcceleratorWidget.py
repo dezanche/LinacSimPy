@@ -544,13 +544,13 @@ class Ui_Form(object):
         
         # bottom left frame
         self.frame_BL = QtWidgets.QFrame(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_BL.sizePolicy().hasHeightForWidth())
-        self.frame_BL.setSizePolicy(sizePolicy)
-        self.frame_BL.setMinimumSize(QtCore.QSize(350, 0))    # was 390, 320
-        self.frame_BL.setMaximumSize(QtCore.QSize(390, 320))
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(1)  # was 0
+        # sizePolicy.setVerticalStretch(1)  # was 0
+        # sizePolicy.setHeightForWidth(self.frame_BL.sizePolicy().hasHeightForWidth())
+        # self.frame_BL.setSizePolicy(sizePolicy)
+        # self.frame_BL.setMinimumSize(QtCore.QSize(350, 0))    # was 390, 320
+        # self.frame_BL.setMaximumSize(QtCore.QSize(390, 320))
         self.frame_BL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_BL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_BL.setObjectName(_fromUtf8('frame_BL'))
@@ -590,10 +590,12 @@ class Ui_Form(object):
         self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName(_fromUtf8('label_14'))
         self.verticalLayout_4.addWidget(self.label_14)
+        
+        # Channel A pull-down menu
         self.comboBox_VDiv_AChan = QtWidgets.QComboBox(self.groupBox_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setVerticalStretch(1)    # was 0
         sizePolicy.setHeightForWidth(self.comboBox_VDiv_AChan.sizePolicy().hasHeightForWidth())
         self.comboBox_VDiv_AChan.setSizePolicy(sizePolicy)
         self.comboBox_VDiv_AChan.setObjectName(_fromUtf8('comboBox_VDiv_AChan'))
@@ -628,10 +630,12 @@ class Ui_Form(object):
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName(_fromUtf8('label_15'))
         self.verticalLayout.addWidget(self.label_15)
+        
+        # Channel B pull-down menu
         self.comboBox_VDiv_BChan = QtWidgets.QComboBox(self.groupBox_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setVerticalStretch(1)    # was 0
         sizePolicy.setHeightForWidth(self.comboBox_VDiv_BChan.sizePolicy().hasHeightForWidth())
         self.comboBox_VDiv_BChan.setSizePolicy(sizePolicy)
         self.comboBox_VDiv_BChan.setObjectName(_fromUtf8('comboBox_VDiv_BChan'))
@@ -666,10 +670,12 @@ class Ui_Form(object):
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setObjectName(_fromUtf8('label_16'))
         self.verticalLayout_2.addWidget(self.label_16)
+        
+        # Time pull-down menu
         self.comboBox_TDiv = QtWidgets.QComboBox(self.groupBox_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setVerticalStretch(1)    # was 0
         sizePolicy.setHeightForWidth(self.comboBox_TDiv.sizePolicy().hasHeightForWidth())
         self.comboBox_TDiv.setSizePolicy(sizePolicy)
         self.comboBox_TDiv.setObjectName(_fromUtf8('comboBox_TDiv'))

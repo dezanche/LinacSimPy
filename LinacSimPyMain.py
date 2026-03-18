@@ -827,7 +827,7 @@ class linacSimPyMainForm(QMainWindow, linacSimPyMainWidget.Ui_MainWindow):
 
 
 def main():
-    print('© 2025 Alberta Health Services, Medical Physics\n'
+    print('© 2025-2026 Alberta Health Services, Medical Physics\n'
           'This program comes with ABSOLUTELY NO WARRANTY\n'
           'LinacSimPy is free software, and you are welcome to redistribute it under certain conditions\n'
           'See the HELP menu for details')
