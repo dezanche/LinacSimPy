@@ -221,6 +221,7 @@ class Ui_Form(object):
         
         # Channel A pull-down menu
         self.comboBox_VDiv_AChan = QtWidgets.QComboBox(self.groupBox_4)
+        self.comboBox_VDiv_AChan.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents) #added
         self.comboBox_VDiv_AChan.setObjectName(_fromUtf8('comboBox_VDiv_AChan'))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
