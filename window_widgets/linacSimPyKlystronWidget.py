@@ -221,7 +221,8 @@ class Ui_Form(object):
         
         # Channel A pull-down menu
         self.comboBox_VDiv_AChan = QtWidgets.QComboBox(self.groupBox_4)
-        self.comboBox_VDiv_AChan.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents) #added but doesn't fix clipped text in high-res monitor
+        # self.comboBox_VDiv_AChan.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents) #doesn't fix clipped text in high-res monitor
+        self.comboBox_VDiv_AChan.setFixedHeight(standard_text_size + 20)
         self.comboBox_VDiv_AChan.setObjectName(_fromUtf8('comboBox_VDiv_AChan'))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
@@ -767,7 +768,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setObjectName(_fromUtf8('label_2'))
-        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 4)
+        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 3)   # setting to 4 doesn't prevent clipping in high-res monitor
         
         self.gridLayout_12.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout_5.addWidget(self.frame_6, 1, 0, 1, 1)
