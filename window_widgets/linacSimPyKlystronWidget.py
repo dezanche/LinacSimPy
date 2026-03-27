@@ -80,20 +80,27 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         Form.setPalette(palette)
-        self.gridLayout_6 = QtWidgets.QGridLayout(Form)
-        self.gridLayout_6.setObjectName(_fromUtf8('gridLayout_6'))
-        self.gridLayout = QtWidgets.QGridLayout()
-        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.gridLayout.setObjectName(_fromUtf8('gridLayout'))
+        
+        # self.gridLayout_6 = QtWidgets.QGridLayout(Form)
+        # self.gridLayout_6.setObjectName(_fromUtf8('gridLayout_6'))
+        # self.gridLayout = QtWidgets.QGridLayout()
+        # self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        # self.gridLayout.setObjectName(_fromUtf8('gridLayout'))
+
+        self.verticalStack = QtWidgets.QVBoxLayout(Form)
+        self.topRow = QtWidgets.QHBoxLayout()
+        self.topRow.setObjectName(_fromUtf8('topRow'))
+        self.bottomRow = QtWidgets.QHBoxLayout()
+        self.bottomRow.setObjectName(_fromUtf8('bottomRow'))  
         
         # top right frame (klystron sketch)
         self.frame_TR = QtWidgets.QFrame(Form)
-        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        # sizePolicy.setHorizontalStretch(0)
-        # sizePolicy.setVerticalStretch(0)
-        # sizePolicy.setHeightForWidth(self.frame_TR.sizePolicy().hasHeightForWidth())
-        # self.frame_TR.setSizePolicy(sizePolicy)
-        # self.frame_TR.setMaximumSize(QtCore.QSize(360, 300))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)  # was 0
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_TR.sizePolicy().hasHeightForWidth())
+        self.frame_TR.setSizePolicy(sizePolicy)
+        self.frame_TR.setMaximumSize(QtCore.QSize(360, 300))
         self.frame_TR.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_TR.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_TR.setObjectName(_fromUtf8('frame_TR'))
@@ -116,7 +123,7 @@ class Ui_Form(object):
         # added tooltip
         self.label.setToolTip('https://en.wikipedia.org/wiki/File:Klystron.enp.gif')
         self.gridLayout_10.addWidget(self.label, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_TR, 0, 1, 1, 1)
+        # self.gridLayout.addWidget(self.frame_TR, 0, 1, 1, 1)
         
         # bottom right frame (klystron characteristic curves)
         self.frame_BR = QtWidgets.QFrame(Form)
@@ -138,17 +145,17 @@ class Ui_Form(object):
         self.gridLayout_BR.setContentsMargins(6,6,6,6)
         self.gridLayout_BR.setObjectName(_fromUtf8('gridLayout_BR'))
         self.gridLayout_9.addLayout(self.gridLayout_BR, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_BR, 2, 1, 1, 1)
+        # self.gridLayout.addWidget(self.frame_BR, 2, 1, 1, 1)
         
         # bottom left frame (scope screen)
         self.frame_BL = QtWidgets.QFrame(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding) # was fixed
+        sizePolicy.setHorizontalStretch(1)  # was 0
+        sizePolicy.setVerticalStretch(1)  # was 0
         sizePolicy.setHeightForWidth(self.frame_BL.sizePolicy().hasHeightForWidth())
         self.frame_BL.setSizePolicy(sizePolicy)
         self.frame_BL.setMinimumSize(QtCore.QSize(400, 310))
-        self.frame_BL.setMaximumSize(QtCore.QSize(400, 310))
+        # self.frame_BL.setMaximumSize(QtCore.QSize(400, 310))
         self.frame_BL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_BL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_BL.setObjectName(_fromUtf8('frame_BL'))
@@ -158,11 +165,11 @@ class Ui_Form(object):
         self.gridLayout_15 = QtWidgets.QGridLayout()
         self.gridLayout_15.setObjectName(_fromUtf8('gridLayout_15'))
         self.frame = QtWidgets.QFrame(self.frame_BL)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        # sizePolicy.setHorizontalStretch(0)  # was 0
+        # sizePolicy.setVerticalStretch(0)  # was 0
+        # sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        # self.frame.setSizePolicy(sizePolicy)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName(_fromUtf8('frame'))
@@ -173,20 +180,26 @@ class Ui_Form(object):
         self.gridLayout_scope.setObjectName(_fromUtf8('gridLayout_scope'))
         self.horizontalLayout_3.addLayout(self.gridLayout_scope)
         self.gridLayout_15.addWidget(self.frame, 0, 0, 1, 1)
+        
+        # frame that contains the pull-down menus; commenting out sizePolicy commands below makes it grow too large
         self.frame_8 = QtWidgets.QFrame(self.frame_BL)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(1)  # was 0
+        sizePolicy.setVerticalStretch(1)  # was 0
         sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
         self.frame_8.setSizePolicy(sizePolicy)
         self.frame_8.setMaximumSize(QtCore.QSize(16777215, 80))
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName(_fromUtf8('frame_8'))
+        
+        # horizontal layout that contains the pull-down menus
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_8)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setContentsMargins(0, 0, -1, 0)
+        # self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName(_fromUtf8('horizontalLayout'))
+        
+        # box that holds the Channel A pull-down menu
         self.groupBox_4 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
@@ -205,6 +218,8 @@ class Ui_Form(object):
         self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName(_fromUtf8('label_14'))
         self.verticalLayout_4.addWidget(self.label_14)
+        
+        # Channel A pull-down menu
         self.comboBox_VDiv_AChan = QtWidgets.QComboBox(self.groupBox_4)
         self.comboBox_VDiv_AChan.setObjectName(_fromUtf8('comboBox_VDiv_AChan'))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
@@ -220,6 +235,8 @@ class Ui_Form(object):
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
         self.verticalLayout_4.addWidget(self.comboBox_VDiv_AChan)
         self.horizontalLayout.addWidget(self.groupBox_4)
+        
+        # box that holds the Channel B pull-down menu      
         self.groupBox_3 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
@@ -238,6 +255,8 @@ class Ui_Form(object):
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName(_fromUtf8('label_15'))
         self.verticalLayout.addWidget(self.label_15)
+        
+        # Channel B pull-down menu
         self.comboBox_VDiv_BChan = QtWidgets.QComboBox(self.groupBox_3)
         self.comboBox_VDiv_BChan.setObjectName(_fromUtf8('comboBox_VDiv_BChan'))
         self.comboBox_VDiv_BChan.addItem(_fromUtf8(''))
@@ -253,6 +272,8 @@ class Ui_Form(object):
         self.comboBox_VDiv_BChan.addItem(_fromUtf8(''))
         self.verticalLayout.addWidget(self.comboBox_VDiv_BChan)
         self.horizontalLayout.addWidget(self.groupBox_3)
+        
+        # box that holds the Time pull-down menu
         self.groupBox_5 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
@@ -271,6 +292,8 @@ class Ui_Form(object):
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setObjectName(_fromUtf8('label_16'))
         self.verticalLayout_2.addWidget(self.label_16)
+        
+        # Time pull-down menu
         self.comboBox_TDiv = QtWidgets.QComboBox(self.groupBox_5)
         self.comboBox_TDiv.setObjectName(_fromUtf8('comboBox_TDiv'))
         self.comboBox_TDiv.addItem(_fromUtf8(''))
@@ -292,9 +315,10 @@ class Ui_Form(object):
         self.comboBox_TDiv.addItem(_fromUtf8(''))
         self.verticalLayout_2.addWidget(self.comboBox_TDiv)
         self.horizontalLayout.addWidget(self.groupBox_5)
+        
         self.gridLayout_15.addWidget(self.frame_8, 1, 0, 1, 1)
         self.gridLayout_8.addLayout(self.gridLayout_15, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_BL, 2, 0, 1, 1)
+        # self.gridLayout.addWidget(self.frame_BL, 2, 0, 1, 1)
         
         # top left frame (parameters)
         self.frame_TL = QtWidgets.QFrame(Form)
@@ -747,8 +771,18 @@ class Ui_Form(object):
         self.gridLayout_12.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout_5.addWidget(self.frame_6, 1, 0, 1, 1)
         self.gridLayout_7.addLayout(self.gridLayout_5, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_TL, 0, 0, 1, 1)
-        self.gridLayout_6.addLayout(self.gridLayout, 0, 0, 1, 1)
+        # self.gridLayout.addWidget(self.frame_TL, 0, 0, 1, 1)
+        # self.gridLayout_6.addLayout(self.gridLayout, 0, 0, 1, 1)
+        
+        self.topRow.addWidget(self.frame_TL)
+        self.topRow.addWidget(self.frame_TR)
+
+        self.bottomRow.addWidget(self.frame_BL)
+        self.bottomRow.addWidget(self.frame_BR)
+        
+        self.verticalStack.addLayout(self.topRow)
+        self.verticalStack.addLayout(self.bottomRow)
+        
         self.retranslateUi(Form)
         self.comboBox_VDiv_AChan.setCurrentIndex(8)
         self.comboBox_VDiv_BChan.setCurrentIndex(8)
@@ -758,7 +792,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate('Form', 'Klystron', None))
         self.groupBox_4.setTitle(_translate('Form', 'Channel A', None))
-        self.label_14.setText(_translate('Form', 'V/Div', None))
+        self.label_14.setText(_translate('Form', 'V/div', None))
         self.comboBox_VDiv_AChan.setItemText(0, _translate('Form', '5mV', None))
         self.comboBox_VDiv_AChan.setItemText(1, _translate('Form', '10mV', None))
         self.comboBox_VDiv_AChan.setItemText(2, _translate('Form', '20mV', None))
@@ -771,7 +805,7 @@ class Ui_Form(object):
         self.comboBox_VDiv_AChan.setItemText(9, _translate('Form', '5V', None))
         self.comboBox_VDiv_AChan.setItemText(10, _translate('Form', '10V', None))
         self.groupBox_3.setTitle(_translate('Form', 'Channel B', None))
-        self.label_15.setText(_translate('Form', 'V/Div', None))
+        self.label_15.setText(_translate('Form', 'V/div', None))
         self.comboBox_VDiv_BChan.setItemText(0, _translate('Form', '5mV', None))
         self.comboBox_VDiv_BChan.setItemText(1, _translate('Form', '10mV', None))
         self.comboBox_VDiv_BChan.setItemText(2, _translate('Form', '20mV', None))
@@ -784,7 +818,7 @@ class Ui_Form(object):
         self.comboBox_VDiv_BChan.setItemText(9, _translate('Form', '5V', None))
         self.comboBox_VDiv_BChan.setItemText(10, _translate('Form', '10V', None))
         self.groupBox_5.setTitle(_translate('Form', 'Time', None))
-        self.label_16.setText(_translate('Form', 'T/Div', None))
+        self.label_16.setText(_translate('Form', 'T/div', None))
         self.comboBox_TDiv.setItemText(0, _translate('Form', '1\u00B5s', None))
         self.comboBox_TDiv.setItemText(1, _translate('Form', '2\u00B5s', None))
         self.comboBox_TDiv.setItemText(2, _translate('Form', '5\u00B5s', None))

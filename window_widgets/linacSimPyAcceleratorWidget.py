@@ -46,6 +46,7 @@ except AttributeError:
 # font sizes for the whole window
 standard_text_size = 9
 large_text_size = 11
+edit_box_width = 60     #hard coded width to make text fit
 
 class Ui_Form(object):
 
@@ -95,7 +96,6 @@ class Ui_Form(object):
         self.bottomRow.setObjectName(_fromUtf8('bottomRow'))  
                                      
         # top left frame
-        edit_box_width = 60     #hard coded width to make text fit
         self.frame_TL = QtWidgets.QFrame(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(1)  # was 0
@@ -542,7 +542,7 @@ class Ui_Form(object):
         #self.gridLayout.addWidget(self.frame_BR, 2, 1, 1, 1)
         # self.bottomRow.addWidget(self.frame_BR) moved below to maintain correct order
         
-        # bottom left frame
+        # bottom left frame (scope screen)
         self.frame_BL = QtWidgets.QFrame(Form)
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         # sizePolicy.setHorizontalStretch(1)  # was 0
@@ -559,6 +559,8 @@ class Ui_Form(object):
         self.gridLayout_8.setObjectName(_fromUtf8('gridLayout_8'))
         self.gridLayout_14 = QtWidgets.QGridLayout()
         self.gridLayout_14.setObjectName(_fromUtf8('gridLayout_14'))
+
+        # frame that contains the pull-down menus; commenting out sizePolicy commands below makes it grow too large
         self.frame_8 = QtWidgets.QFrame(self.frame_BL)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
@@ -569,12 +571,22 @@ class Ui_Form(object):
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName(_fromUtf8('frame_8'))
+        
+        # horizontal layout that contains the pull-down menus
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_8)
+        # these don't work
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.horizontalLayout.sizePolicy().hasHeightForWidth())
+        # self.horizontalLayout.setSizePolicy(sizePolicy)
         self.horizontalLayout.setContentsMargins(0,0,0,0)
         self.horizontalLayout.setObjectName(_fromUtf8('horizontalLayout'))
+        
+        # box that holds the Channel A pull-down menu
         self.groupBox_4 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(standard_text_size)   # was 10
         font.setBold(True)
         font.setWeight(75)
         self.groupBox_4.setFont(font)
@@ -612,9 +624,11 @@ class Ui_Form(object):
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
         self.verticalLayout_4.addWidget(self.comboBox_VDiv_AChan)
         self.horizontalLayout.addWidget(self.groupBox_4)
+        
+        # box that holds the Channel B pull-down menu
         self.groupBox_3 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(standard_text_size)   # was 10
         font.setBold(True)
         font.setWeight(75)
         self.groupBox_3.setFont(font)
@@ -652,9 +666,11 @@ class Ui_Form(object):
         self.comboBox_VDiv_BChan.addItem(_fromUtf8(''))
         self.verticalLayout.addWidget(self.comboBox_VDiv_BChan)
         self.horizontalLayout.addWidget(self.groupBox_3)
+        
+        # box that holds the Time pull-down menu
         self.groupBox_5 = QtWidgets.QGroupBox(self.frame_8)
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(standard_text_size)   # was 10
         font.setBold(True)
         font.setWeight(75)
         self.groupBox_5.setFont(font)
@@ -698,13 +714,16 @@ class Ui_Form(object):
         self.comboBox_TDiv.addItem(_fromUtf8(''))
         self.verticalLayout_2.addWidget(self.comboBox_TDiv)
         self.horizontalLayout.addWidget(self.groupBox_5)
+        
         self.gridLayout_14.addWidget(self.frame_8, 1, 0, 1, 1)
+        
         self.frame = QtWidgets.QFrame(self.frame_BL)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
+        # commented out but no change in behaviour
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        # self.frame.setSizePolicy(sizePolicy)
         self.frame.setObjectName(_fromUtf8('frame'))
         self.gridLayout_16 = QtWidgets.QGridLayout(self.frame)
         self.gridLayout_16.setContentsMargins(0,0,0,0)
@@ -759,7 +778,7 @@ class Ui_Form(object):
         self.label_17.setText(_translate('Form', 'Accelerator Efficiency [%]', None))
         self.label_2.setText(_translate('Form', 'Other Accelerator Parameters', None))
         self.groupBox_4.setTitle(_translate('Form', 'Channel A', None))
-        self.label_14.setText(_translate('Form', 'V/Div', None))
+        self.label_14.setText(_translate('Form', 'V/div', None))
         self.comboBox_VDiv_AChan.setItemText(0, _translate('Form', '5mV', None))
         self.comboBox_VDiv_AChan.setItemText(1, _translate('Form', '10mV', None))
         self.comboBox_VDiv_AChan.setItemText(2, _translate('Form', '20mV', None))
@@ -772,7 +791,7 @@ class Ui_Form(object):
         self.comboBox_VDiv_AChan.setItemText(9, _translate('Form', '5V', None))
         self.comboBox_VDiv_AChan.setItemText(10, _translate('Form', '10V', None))
         self.groupBox_3.setTitle(_translate('Form', 'Channel B', None))
-        self.label_15.setText(_translate('Form', 'V/Div', None))
+        self.label_15.setText(_translate('Form', 'V/div', None))
         self.comboBox_VDiv_BChan.setItemText(0, _translate('Form', '5mV', None))
         self.comboBox_VDiv_BChan.setItemText(1, _translate('Form', '10mV', None))
         self.comboBox_VDiv_BChan.setItemText(2, _translate('Form', '20mV', None))
@@ -785,7 +804,7 @@ class Ui_Form(object):
         self.comboBox_VDiv_BChan.setItemText(9, _translate('Form', '5V', None))
         self.comboBox_VDiv_BChan.setItemText(10, _translate('Form', '10V', None))
         self.groupBox_5.setTitle(_translate('Form', 'Time', None))
-        self.label_16.setText(_translate('Form', 'T/Div', None))
+        self.label_16.setText(_translate('Form', 'T/div', None))
         self.comboBox_TDiv.setItemText(0, _translate('Form', '1\u00B5s', None))
         self.comboBox_TDiv.setItemText(1, _translate('Form', '2\u00B5s', None))
         self.comboBox_TDiv.setItemText(2, _translate('Form', '5\u00B5s', None))
