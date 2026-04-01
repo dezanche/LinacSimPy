@@ -181,14 +181,15 @@ class Ui_Form(object):
         self.horizontalLayout_3.addLayout(self.gridLayout_scope)
         self.gridLayout_15.addWidget(self.frame, 0, 0, 1, 1)
         
-        # frame that contains the pull-down menus; commenting out sizePolicy commands below makes it grow too large
+        # frame that contains the pull-down menus
         self.frame_8 = QtWidgets.QFrame(self.frame_BL)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)  # was 0
-        sizePolicy.setVerticalStretch(1)  # was 0
-        sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum) # was Preferred
+        # sizePolicy.setHorizontalStretch(0)  # was 0
+        # sizePolicy.setVerticalStretch(0)  # was 0
+        # sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
         self.frame_8.setSizePolicy(sizePolicy)
-        self.frame_8.setMaximumSize(QtCore.QSize(16777215, 80))
+        # commenting out next command below makes it grow quite tall
+        # self.frame_8.setMaximumSize(QtCore.QSize(16777215, 80))
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName(_fromUtf8('frame_8'))
@@ -200,7 +201,16 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName(_fromUtf8('horizontalLayout'))
         
         # box that holds the Channel A pull-down menu
+        # this needs a sizepolicy to grow to fit?
         self.groupBox_4 = QtWidgets.QGroupBox(self.frame_8)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, 
+            QtWidgets.QSizePolicy.Preferred
+        )
+        # sizePolicy.setHorizontalStretch(1)
+        # sizePolicy.setVerticalStretch(1)
+        # sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
+        self.groupBox_4.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
         font.setBold(True)
@@ -222,7 +232,7 @@ class Ui_Form(object):
         # Channel A pull-down menu
         self.comboBox_VDiv_AChan = QtWidgets.QComboBox(self.groupBox_4)
         # self.comboBox_VDiv_AChan.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents) #doesn't fix clipped text in high-res monitor
-        self.comboBox_VDiv_AChan.setFixedHeight(standard_text_size + 20)
+        self.comboBox_VDiv_AChan.setFixedHeight(standard_text_size + 20)    # fixes but the frame doesn't adjust accordingly
         self.comboBox_VDiv_AChan.setObjectName(_fromUtf8('comboBox_VDiv_AChan'))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
         self.comboBox_VDiv_AChan.addItem(_fromUtf8(''))
@@ -240,6 +250,12 @@ class Ui_Form(object):
         
         # box that holds the Channel B pull-down menu      
         self.groupBox_3 = QtWidgets.QGroupBox(self.frame_8)
+        # added
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, 
+            QtWidgets.QSizePolicy.Preferred
+        )
+        self.groupBox_3.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
         font.setBold(True)
@@ -277,6 +293,12 @@ class Ui_Form(object):
         
         # box that holds the Time pull-down menu
         self.groupBox_5 = QtWidgets.QGroupBox(self.frame_8)
+        # added
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, 
+            QtWidgets.QSizePolicy.Preferred
+        )
+        self.groupBox_5.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(standard_text_size)
         font.setBold(True)
