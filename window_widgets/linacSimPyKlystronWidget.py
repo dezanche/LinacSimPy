@@ -149,7 +149,7 @@ class Ui_Form(object):
         
         # bottom left frame (scope screen)
         self.frame_BL = QtWidgets.QFrame(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding) # was fixed
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding) # was Fixed
         sizePolicy.setHorizontalStretch(1)  # was 0
         sizePolicy.setVerticalStretch(1)  # was 0
         sizePolicy.setHeightForWidth(self.frame_BL.sizePolicy().hasHeightForWidth())
@@ -159,10 +159,11 @@ class Ui_Form(object):
         self.frame_BL.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_BL.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_BL.setObjectName(_fromUtf8('frame_BL'))
-        self.gridLayout_8 = QtWidgets.QGridLayout(self.frame_BL)
-        self.gridLayout_8.setContentsMargins(6,6,6,6)
-        self.gridLayout_8.setObjectName(_fromUtf8('gridLayout_8'))
-        self.gridLayout_15 = QtWidgets.QGridLayout()
+        # 8 and 15 are nested and redundant --> deleted gridLayout_8
+        # self.gridLayout_8 = QtWidgets.QGridLayout(self.frame_BL) 
+        # self.gridLayout_8.setContentsMargins(6,6,6,6)
+        # self.gridLayout_8.setObjectName(_fromUtf8('gridLayout_8'))
+        self.gridLayout_15 = QtWidgets.QGridLayout(self.frame_BL)   # was ()
         self.gridLayout_15.setObjectName(_fromUtf8('gridLayout_15'))
         self.frame = QtWidgets.QFrame(self.frame_BL)
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -189,7 +190,7 @@ class Ui_Form(object):
         # sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
         self.frame_8.setSizePolicy(sizePolicy)
         # commenting out next command below makes it grow quite tall
-        # self.frame_8.setMaximumSize(QtCore.QSize(16777215, 80))
+        self.frame_8.setMaximumSize(QtCore.QSize(16777215, 80))
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName(_fromUtf8('frame_8'))
@@ -341,7 +342,7 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.groupBox_5)
         
         self.gridLayout_15.addWidget(self.frame_8, 1, 0, 1, 1)
-        self.gridLayout_8.addLayout(self.gridLayout_15, 0, 0, 1, 1)
+        # self.gridLayout_8.addLayout(self.gridLayout_15, 0, 0, 1, 1)  # deleted gridLayout_8
         # self.gridLayout.addWidget(self.frame_BL, 2, 0, 1, 1)
         
         # top left frame (parameters)
